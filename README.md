@@ -20,6 +20,7 @@ This repository is a **sanitized portfolio**. It contains conceptual workflow de
 | Area | Skills |
 |---|---|
 | **AI & AI-assisted development** | Claude Code, Codex, DeepSeek, LLM workflow design, AI agents, prompt engineering |
+| **AI Infrastructure** | MCP, AI-to-execution bridges, tool integration, task orchestration |
 | **Automation & integration** | Workflow automation, business process automation, REST APIs, webhooks, event-driven design, data validation and transformation |
 | **Development** | Node.js, TypeScript, JavaScript, Git / GitHub |
 | **Data** | Supabase, PostgreSQL, SQLite |
@@ -48,6 +49,7 @@ These are projects I have worked on. Source code and implementation details are 
 - **Referly** — a B2B referral and affiliate SaaS covering referral, registration, booking and reward workflows.
 - **MiraAI** — an AI knowledge and workflow platform built around knowledge management, AI agents and workflow automation.
 - **MiraAI SHO Tutor** — an AI-assisted tutoring system for structured learning and exam preparation.
+- **TinnyBridge MCP** — a custom MCP bridge for connecting AI coding workflows with a local execution environment, including task execution, result retrieval and recovery handling.
 
 ---
 
@@ -57,6 +59,7 @@ These are projects I have worked on. Source code and implementation details are 
 Business requirement
   → Workflow design
   → AI-assisted implementation (Claude Code, Codex, DeepSeek)
+  → MCP / tool integration
   → Testing and review
   → Git / GitHub
 ```
