@@ -11,6 +11,10 @@ Malaysia | Remote | Open to international, USD-based roles
 
 **[View My CV](CV.md)** — browser-readable CV for recruiters and hiring managers.
 
+## 💼 Remote Job Application Template
+
+**[Open Remote Job Application Template](REMOTE_JOB_APPLICATION_TEMPLATE.md)** — standard checklist and message template for remote job applications.
+
 ---
 
 ## About
