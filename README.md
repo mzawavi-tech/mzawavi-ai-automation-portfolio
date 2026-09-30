@@ -7,6 +7,12 @@ Malaysia | Remote | Open to international, USD-based roles
 
 ---
 
+## 📄 CV
+
+**[View My CV](CV.md)** — browser-readable CV for recruiters and hiring managers.
+
+---
+
 ## About
 
 I build practical automation and AI-assisted software for business processes. My focus is turning a business requirement into a clear workflow, wiring it together with APIs and webhooks, using LLMs where they add value, and keeping a human in control of anything customer-facing.
