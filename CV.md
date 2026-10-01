@@ -1,29 +1,40 @@
 # Mohamad Zawavi Muda
 
-## AI Automation & AI Operations Specialist
+## Business Systems Analyst | AI Automation & AI Operations
 
-**Malaysia | Remote | Open to international, USD-based roles**  
+**Malaysia | Remote | Open to international / USD-based roles**  
 **Email:** mzawavi@gmail.com  
 **GitHub Portfolio:** https://github.com/mzawavi-tech/mzawavi-ai-automation-portfolio
 
 ---
 
-## Profile
+## Professional Profile
 
-AI Automation & AI Operations practitioner focused on turning business requirements into practical AI-assisted workflows, automation systems and software solutions.
+Business Systems Analyst with an IT project-management background and hands-on experience designing AI-assisted automation, business workflows and software solutions.
 
-I work across business analysis, AI-assisted development, workflow automation, marketing systems, MCP/tool integration, testing and optimisation. I use AI coding and research tools to accelerate implementation while reviewing and validating the output.
+I specialise in understanding **business requirements and manual processes**, translating them into clear AS-IS / TO-BE workflows, then using AI, automation tools, APIs, webhooks and software platforms to turn those workflows into practical solutions.
+
+I am not positioned as a pure software developer. My strength is **business analysis + systems thinking + AI-assisted execution**: understanding what the business needs, designing the logic, directing AI/technical tools, reviewing the implementation, testing the workflow and improving it.
 
 ---
 
 ## Core Capabilities
 
+### Business Systems Analysis & Automation
+- Business requirement analysis and process mapping
+- AS-IS / TO-BE workflow design and gap identification
+- Business rules, conditions, exceptions and edge-case thinking
+- Workflow automation and AI-assisted solution design
+- Human-in-the-loop approval and escalation workflows
+- UAT-oriented testing, validation, troubleshooting and documentation
+
 ### AI & Automation
-- AI-assisted software development using Claude Code, Codex and DeepSeek
+- AI-assisted development using Claude Code, Codex and DeepSeek
 - LLM workflow design, AI agents and prompt engineering
-- Workflow automation, REST APIs, webhooks and event-driven systems
+- REST APIs, webhooks and event-driven workflows
 - MCP / Model Context Protocol and AI-to-execution bridges
-- Data validation, transformation, logging, testing and recovery workflows
+- Data validation, transformation, JSON handling and workflow logic
+- AI-assisted research, analysis and iterative optimisation
 
 ### AI Marketing & Growth Systems
 - Customer avatar, pain-point and Voice of Customer (VOC) analysis
@@ -32,20 +43,22 @@ I work across business analysis, AI-assisted development, workflow automation, m
 - CW, hooks, copywriting, offer / CTA development and creative direction
 - AI-assisted market and competitor research
 - Meta Ads campaign strategy, creative testing, performance analysis and optimisation workflows
-- AI-assisted specialist workflows using GPTWORKPRO and Claude skills
+- GPTWORKPRO and Claude specialist workflows for marketing research, execution and optimisation
 
-### Development & Data
-- Node.js, TypeScript, JavaScript
+### Technical / Platform Skills
+- JavaScript / Node.js, TypeScript
 - Git / GitHub
-- Supabase, PostgreSQL and SQLite
-- B2B SaaS architecture and workflow design
+- Supabase, PostgreSQL, SQLite
+- API and webhook integration concepts
+- B2B SaaS workflow and system architecture
+- **n8n / Make:** actively developing hands-on automation skills; strong transferable experience in APIs, webhooks, workflow logic and AI automation
 
 ---
 
-## Project Experience
+## Selected AI & Automation Projects
 
 ### GPTWORKPRO — AI-Assisted Business & Workflow System
-Developed a modular AI workflow approach combining business requirements, specialist skills, reusable knowledge assets, AI-assisted implementation and workflow orchestration.
+Designed a modular AI workflow approach combining business requirements, reusable knowledge assets, specialist AI skills, workflow orchestration and execution-oriented automation.
 
 ### MATFBPRO — Pain-First Marketing Framework
 Built a structured marketing methodology covering customer pain, VOC, emotional triggers, marketing angles, awareness levels, funnel stages, campaign structure, CW, offers and CTA design.
@@ -64,39 +77,41 @@ Developed an AI tutoring architecture for structured learning, quizzes, exam sim
 
 ---
 
-## Working Approach
+## How I Approach an Automation Project
 
 ```text
-Business Requirement
+Client / Business Requirement
         ↓
-Research & Customer Insight
+Understand AS-IS Process
         ↓
-Marketing / Automation Strategy
+Identify Pain Points & Manual Work
         ↓
-AI Workflow Design
+Define TO-BE Workflow
         ↓
-MCP / APIs / Webhooks / Tools
+Business Rules + Exceptions
+        ↓
+Choose Automation / AI / API Tools
         ↓
 AI-Assisted Implementation
         ↓
-Testing & Validation
+Testing / UAT / Error Handling
         ↓
-Performance Analysis
+Monitoring & Documentation
         ↓
 Optimisation
-        ↓
-Delivery
 ```
+
+**Business first. Technology second. AI where it adds value.**
 
 ---
 
 ## Professional Background
 
-- **HSE Coordinator / Logistics & Facility Executive** — RB Plant Services Sdn Bhd
-- **IT Project / IT Management experience** — including banking-sector technology operations
-- **Safety & HSE training experience** — industrial and oil & gas environment
-- **Business coaching / entrepreneurship experience** — business systems, marketing and customer-facing operations
-- **AI / automation projects** — independent project development using modern AI-assisted development workflows
+- **HSE Coordinator / Logistics & Facility Executive — RB Plant Services Sdn Bhd**: business process coordination, HSE systems, documentation, project support and operational workflows in an industrial environment.
+- **IT Management / Project Experience**: banking-sector IT operations, project coordination and systems-related work.
+- **Safety & HSE Training Experience**: industrial and oil & gas environment.
+- **Business Coaching / Entrepreneurship**: business systems, customer-facing operations and marketing.
+- **AI / Automation Projects**: independent development of AI-assisted business, workflow and SaaS solutions.
 
 ---
 
@@ -115,4 +130,4 @@ Delivery
 **Email:** mzawavi@gmail.com  
 **GitHub:** https://github.com/mzawavi-tech/mzawavi-ai-automation-portfolio
 
-> WhatsApp and LinkedIn are available directly to recruiters upon request.
+> WhatsApp and LinkedIn are intentionally not published publicly. Recruiters can contact me by email.
