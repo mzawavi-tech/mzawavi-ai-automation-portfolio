@@ -1,165 +1,112 @@
-# mzawavi-ai-automation-portfolio
 # AI Automation Portfolio
 
-**Mohamad Zawavi Muda**  
+**Mohamad Zawavi Muda**
 AI Automation & AI Operations Specialist
 
-Malaysia | Remote | Available for International / USD-based Roles
+Malaysia | Remote | Open to international, USD-based roles
+
+---
+
+## 📄 CV
+
+**[View My CV](CV.md)** — browser-readable CV for recruiters and hiring managers.
+
+## 💼 Remote Job Application Template
+
+**[Open Remote Job Application Template](REMOTE_JOB_APPLICATION_TEMPLATE.md)** — standard checklist and message template for remote job applications.
 
 ---
 
 ## About
 
-Hands-on AI builder focused on practical automation, AI-assisted software development, workflow design, and B2B SaaS.
+I build practical automation and AI-assisted software for business processes. My focus is turning a business requirement into a clear workflow, wiring it together with APIs and webhooks, using LLMs where they add value, and keeping a human in control of anything customer-facing.
 
-I use AI coding agents and modern development tools to turn business requirements into working systems and repeatable workflows.
-
-My approach combines:
-
-- Business process understanding
-- AI-assisted development
-- Workflow automation
-- API and webhook integration
-- B2B SaaS development
-- Testing and documentation
+This repository is a **sanitized portfolio**. It contains conceptual workflow designs with fictional data. It does not contain source code, credentials, or data from any real project. See [`docs/README.md`](docs/README.md).
 
 ---
 
 ## Core Skills
 
-### AI & AI-Assisted Development
-
-- Claude Code
-- Codex
-- DeepSeek
-- LLM workflow design
-- AI agents
-- Prompt and workflow engineering
-- AI-assisted coding
-
-### Automation & Integration
-
-- Workflow automation
-- REST APIs
-- Webhooks
-- Event-driven workflows
-- Data pipelines
-- System integration
-- Business process automation
-
-### Development
-
-- Node.js
-- Express
-- Next.js
-- TypeScript
-- JavaScript
-- Supabase
-- PostgreSQL
-- SQLite
-- Git / GitHub
+| Area | Skills |
+|---|---|
+| **AI & AI-assisted development** | Claude Code, Codex, DeepSeek, LLM workflow design, AI agents, prompt engineering |
+| **AI Infrastructure** | MCP, AI-to-execution bridges, tool integration, task orchestration |
+| **AI Marketing & Growth** | Customer pain/VOC, marketing angles, emotional triggers, TOFU/MOFU/BOFU, campaign strategy, AI-assisted research, Meta Ads strategy and optimisation workflows |
+| **Automation & integration** | Workflow automation, business process automation, REST APIs, webhooks, event-driven design, data validation and transformation |
+| **Development** | Node.js, TypeScript, JavaScript, Git / GitHub |
+| **Data** | Supabase, PostgreSQL, SQLite |
+| **Domain** | B2B SaaS |
 
 ---
 
-## Selected Projects
+## AI Marketing & Growth Systems
 
-### 1. Referly — B2B Referral & Affiliate SaaS
+I use structured AI-assisted workflows to connect customer insight, campaign strategy, creative development and optimisation.
 
-A B2B referral platform designed to automate customer referral, registration, booking and reward workflows.
+- **Customer & market research:** customer avatar, pain-point analysis, Voice of Customer (VOC), competitor/market research and insight extraction.
+- **Strategy:** emotional triggers, marketing angles, awareness levels and TOFU / MOFU / BOFU funnel planning.
+- **Campaign execution:** campaign planning, CW development, offer / CTA design, hooks, copywriting and creative/poster briefs.
+- **Meta Ads:** campaign structure, audience strategy, creative testing, performance analysis and optimisation workflows.
+- **AI specialist workflows:** GPTWORKPRO workflows and Claude specialist skills for research, marketing execution and iterative optimisation.
 
-**Workflow:**
-
-Customer → Registration → Referral → Booking → Reward
-
-**Technology:**
-
-- Next.js
-- TypeScript
-- Supabase
-- PostgreSQL
-- Puck CMS
-- REST/API workflows
-
-**Automation focus:**
-
-- Referral-code resolution
-- Customer registration
-- Member → Agent upgrade
-- Booking workflow
-- Reward calculation
-- Admin dashboard
-
-> Production source code and private business data are intentionally not published in this portfolio.
+The goal is to turn a business objective into a repeatable workflow from **research → strategy → creative → ads → analysis → optimisation**.
 
 ---
 
-### 2. MiraAI — AI Knowledge & Workflow Platform
+## Workflow Examples
 
-A modular AI platform designed around knowledge management, AI agents and workflow automation.
+Each example is a design write-up with fictional data, not a deployed system.
 
-**Architecture areas:**
+| Example | What it shows |
+|---|---|
+| [Lead processing](examples/lead-processing-workflow.md) | Capture, validation, enrichment, AI classification, qualification, human review, outreach |
+| [AI reply approval](examples/ai-reply-approval-workflow.md) | Classifying prospect replies, drafting responses with AI, human approval before sending |
+| [Webhook automation](examples/webhook-automation-workflow.md) | Payload validation, transformation, business rules, retries, error handling, logging |
 
-- Knowledge Engine
-- Learning Engine
-- Workflow Engine
-- Agent Engine
-- Connector Hub
-- Import Engine
-
-**Technology:**
-
-- Node.js
-- Express
-- SQLite
-- LLM APIs
-- WhatsApp Cloud API
-- OCR
-
-**Automation focus:**
-
-Knowledge Import → OCR → Knowledge Storage → AI Retrieval → Response
+The [architecture overview](architecture/README.md) describes the general pattern the examples follow.
 
 ---
 
-### 3. MiraAI SHO Tutor
+## Project Experience (High Level)
 
-An AI-assisted learning platform concept for structured learning, assessment and exam preparation.
+These are projects I have worked on. Source code and implementation details are private and intentionally not published here.
 
-**Core components:**
-
-- Tutor Engine
-- Domain Model
-- LLM Abstraction
-- Evaluator
-- Learning / Attempt Tracking
-- CLI
-- Seed Content
-
-**Technology:**
-
-- Node.js
-- DeepSeek
-- OpenAI-compatible API architecture
-- GitHub
-- AI coding agents
+- **GPTWORKPRO** — an AI-assisted business and workflow system combining reusable knowledge assets, specialist AI workflows and execution-oriented automation.
+- **Referly** — a B2B referral and affiliate SaaS covering referral, registration, booking and reward workflows.
+- **MiraAI** — an AI knowledge and workflow platform built around knowledge management, AI agents and workflow automation.
+- **MiraAI SHO Tutor** — an AI-assisted tutoring system for structured learning and exam preparation.
+- **TinnyBridge MCP** — a custom MCP bridge for connecting AI coding workflows with a local execution environment, including task execution, result retrieval and recovery handling.
 
 ---
 
-## AI-Assisted Development Workflow
-
-My preferred development workflow:
+## Working Approach
 
 ```text
-Business Requirement
-        ↓
-System / Workflow Design
-        ↓
-AI-assisted Development
-        ↓
-Implementation
-        ↓
-Testing
-        ↓
-GitHub
-        ↓
-Deployment
+Business requirement
+  → Market / customer research
+  → Pain / VOC / strategy
+  → Workflow design
+  → AI-assisted implementation (Claude Code, Codex, DeepSeek)
+  → MCP / tool integration
+  → Testing and review
+  → Git / GitHub
+  → Data / performance analysis
+  → Optimisation
+```
+
+I use AI coding and specialist tools to move faster, while reviewing, testing and documenting what they produce.
+
+---
+
+## Scope and Honesty Note
+
+The workflow examples here are conceptual. Tools such as n8n, Zapier, Make, Lindy, Clay, Apollo or Instantly are not part of this repository, and nothing here claims production experience with them. The concepts shown (webhooks, REST APIs, validation, retries, human review, logging) are what I would apply on any of those platforms.
+
+The marketing capabilities described above reflect AI-assisted strategy and workflow design. Specific production ad-spend results or platform-scale claims are not stated unless documented separately.
+
+---
+
+## Contact
+
+- Email: mzawavi@gmail.com
+- GitHub: https://github.com/mzawavi-tech/mzawavi-ai-automation-portfolio
