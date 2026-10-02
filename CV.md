@@ -18,31 +18,44 @@ Hands-on experience building and coordinating AI-enabled solutions using modern 
 
 ---
 
-## CURRENT ROLE
+## PROFESSIONAL EXPERIENCE
 
-### Coordinator – Aviation Vehicles Maintenance | PDB, Senai
-**Current**
+### Coordinator – Aviation Vehicles Maintenance | RB Plant Services Sdn Bhd (PDB, Senai)
+**Oct 2026 – Present**
 
-- Coordinate aviation vehicle maintenance-related activities and follow-up.
-- Coordinate communication between relevant operational, maintenance and support stakeholders.
+- Coordinate aviation vehicle maintenance-related activities, follow-up and communication across operational, maintenance and support stakeholders.
 - Track work progress, pending items, documentation and follow-up actions.
 - Support operational planning, reporting and day-to-day coordination.
 - Escalate outstanding issues and coordinate required actions to maintain operational continuity.
 
----
+### Logistics & Facilities Executive | RB Plant Services Sdn Bhd
+**Jun 2026 – Sep 2026**
 
-## PREVIOUS EXPERIENCE
+- Coordinated logistics, facilities, accommodation, transportation and project support requirements.
+- Worked with project teams, contractors, vendors and site personnel.
+- Prepared reports, records, plans and operational documentation.
 
-### HSE Coordinator / Logistics & Facility Executive | RB Plant Services Sdn Bhd
-**2024 – Present / Recent**
+### HSE Executive | RB Plant Services Sdn Bhd
+**May 2025 – May 2026**
 
-- Coordinate HSE activities, documentation, inspections, toolbox talks, induction and HSE committee activities.
-- Support ISO 45001-related preparation, HSE planning, KPI reporting and audit activities.
-- Coordinate logistics, facilities, accommodation, transportation and project support requirements.
-- Coordinate with project teams, contractors, vendors and site personnel.
-- Prepare reports, records, plans and operational documentation.
+- Coordinated HSE activities, documentation, inspections, toolbox talks, induction and HSE committee activities.
+- Supported ISO 45001-related preparation, HSE planning, KPI reporting and audit activities.
 
-### IT Project Manager
+### Logistics Executive | RB Plant Services Sdn Bhd
+**Jun 2024 – Apr 2025**
+
+- Coordinated logistics, transportation and project support with site personnel, contractors and vendors.
+- Prepared records, reports and operational documentation.
+
+### Business Owner / Self-Employed
+**2019 – 2024**
+
+### Safety Instructor | Ranaco
+**2014 – 2019**
+
+- Delivered safety-related training and supported workforce awareness and operational safety activities.
+
+### IT Project Manager | Koperasi Pembiayaan Syariah Angkasa Berhad (Kopsya)
 **2012 – 2014**
 
 - Coordinated IT projects, requirements, implementation activities and stakeholders.
@@ -54,11 +67,6 @@ Hands-on experience building and coordinating AI-enabled solutions using modern 
 - Long-term IT operations and business systems experience in a banking environment.
 - Supported technology operations, users, systems and business requirements.
 - Developed strong experience in structured problem solving, coordination and operational support.
-
-### Safety Instructor | Ranaco
-**2014 – 2019**
-
-- Delivered safety-related training and supported workforce awareness and operational safety activities.
 
 ### Material Control & Purchasing Officer
 **1998**
@@ -158,7 +166,6 @@ AI-assisted development and MCP integration workflow connecting AI execution wit
 
 - MBA Islamic Banking — Universiti Kebangsaan Malaysia
 - Bachelor of Management Information Systems — Oklahoma City University
-- Diploma Secretarial Sciences
 - Diploma Personnel Management — UniSZA
 - NIOSH Safety & Health Officer course completed
 
