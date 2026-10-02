@@ -36,6 +36,15 @@ I am not positioned as a pure software developer. My strength is **business anal
 - Data validation, transformation, JSON handling and workflow logic
 - AI-assisted research, analysis and iterative optimisation
 
+### n8n / Make Automation — Hands-On Development Track
+- n8n workflow design: triggers, webhooks, nodes, conditions, data mapping and workflow routing
+- AI-powered automation concepts: LLM steps, content generation, classification and human review
+- API / webhook integration and JSON-based data handling
+- Google Sheets, CRM, notification and WordPress automation patterns
+- Make scenario concepts: modules, mapping, filters, routers and HTTP/API integration
+- JavaScript fundamentals for custom logic and data transformation
+- Practical client-simulation training focused on production-style workflow thinking and troubleshooting
+
 ### AI Marketing & Growth Systems
 - Customer avatar, pain-point and Voice of Customer (VOC) analysis
 - Emotional triggers, marketing angles and awareness-level strategy
@@ -51,7 +60,7 @@ I am not positioned as a pure software developer. My strength is **business anal
 - Supabase, PostgreSQL, SQLite
 - API and webhook integration concepts
 - B2B SaaS workflow and system architecture
-- **n8n / Make:** actively developing hands-on automation skills; strong transferable experience in APIs, webhooks, workflow logic and AI automation
+- n8n / Make — actively building hands-on capability through practical automation projects
 
 ---
 
@@ -74,6 +83,9 @@ Worked on knowledge management, AI workflow, agent and connector concepts, inclu
 
 ### MiraAI SHO Tutor — AI-Assisted Learning System
 Developed an AI tutoring architecture for structured learning, quizzes, exam simulation, evaluation and knowledge-driven tutoring workflows.
+
+### n8n Automation Training — AI Content & Publishing Workflow
+Hands-on training based on a production-style n8n automation pattern covering scheduled execution, AI content generation, structured output, image-search workflow, Google Sheets storage, WordPress publishing and workflow delay/automation logic. This is part of the ongoing practical development track rather than a claimed client deployment.
 
 ---
 
