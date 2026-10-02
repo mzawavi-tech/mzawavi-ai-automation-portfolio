@@ -1,32 +1,21 @@
-# Project: AI Lead Intake & Follow-up Automation (n8n + Make/Zapier)
+# AI Lead Intake & Follow-up Automation (n8n + Make)
 
-Status: PLAN. Nothing here is built yet. Update the CV only after the workflows run and are demonstrable.
+**Status: built from spec, NOT yet executed.** Workflow JSON and form are written but untested on a live n8n Cloud trial. Do not claim n8n/Make experience on the CV until `docs/02-test-cases.md` is filled with real results.
 
-## Goal
-Close the CV gap for postings 3, 4 and 5 (n8n, Zapier/Make) with one real project that reuses existing strengths (Supabase, WhatsApp Cloud API, LLMs, referral logic from Referly).
+Flow: web form -> n8n webhook -> validate -> duplicate check -> LLM classify -> rules -> Supabase -> acknowledgement + owner alert, with retries and an error log.
 
-## Business problem
-Inbound enquiries (web form or WhatsApp) are answered late and unevenly. Staff copy details into a sheet by hand.
+## Layout
+- `docs/01-process-and-rules.md` AS-IS/TO-BE, business rules, exceptions
+- `db/schema.sql` Supabase tables
+- `form/index.html` web form (set `WEBHOOK_URL`)
+- `n8n/lead-intake.workflow.json` import via n8n Cloud > Workflows > Import from file
+- `make/README.md` Make rebuild guide
+- `docs/02-test-cases.md` test matrix
 
-## TO-BE workflow
-1. Webhook receives an enquiry (form or WhatsApp message).
-2. Validate and normalise the payload; reject duplicates (idempotency key).
-3. LLM step classifies intent (sales / support / spam) and extracts name, phone and need into structured JSON.
-4. Rules: route by intent; flag low-confidence results for human review.
-5. Write the record to Supabase/PostgreSQL.
-6. Send an acknowledgement (WhatsApp Cloud API or email) and notify the owner.
-7. On failure: retry with backoff, then log to an errors table and alert.
+## Your setup steps (needs your accounts; I can't do these from here)
+1. Supabase: create a free project, run `db/schema.sql`.
+2. n8n Cloud trial: set variables `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `ANTHROPIC_API_KEY`, `MAIL_FROM`, `OWNER_EMAIL`. If your plan lacks environment variables, replace the `$env.` references with Credentials. Configure an SMTP credential on the two email nodes.
+3. Import the workflow, publish it, copy the **production** webhook URL into `form/index.html`.
+4. Run the tests T1-T10 and tell me the results. I will fix whatever fails.
 
-## Build plan
-| Phase | Deliverable |
-|---|---|
-| 1 | Process map (AS-IS / TO-BE), business rules and exception list |
-| 2 | n8n implementation with error paths, retries and structured logs |
-| 3 | Same flow rebuilt in Make (or Zapier) for comparison |
-| 4 | Test cases, short demo recording, write-up with what failed and what was fixed |
-| 5 | Update CV with the tools, once Phases 2–3 are working |
-
-## Decisions needed from you
-- n8n: self-hosted (Docker) or n8n Cloud trial?
-- Make or Zapier for Phase 3? (Make's free tier is generally friendlier.)
-- Trigger channel for the demo: web form or WhatsApp?
+Never commit keys. The service-role key bypasses row-level security, so keep it server-side only.

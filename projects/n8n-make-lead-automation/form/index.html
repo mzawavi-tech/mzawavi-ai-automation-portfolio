@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact us</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:480px;margin:2rem auto;padding:0 16px}
+label{display:block;margin:.8rem 0 .2rem}input,textarea{width:100%;padding:.5rem;box-sizing:border-box}
+button{margin-top:1rem;padding:.6rem 1.2rem}#msg{margin-top:1rem}
+.hp{position:absolute;left:-9999px}
+</style></head><body>
+<h1>Contact us</h1>
+<form id="f">
+  <label>Name <input name="name" required></label>
+  <label>Email <input name="email" type="email" required></label>
+  <label>Phone (optional) <input name="phone"></label>
+  <label>Message <textarea name="message" rows="5" required></textarea></label>
+  <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <button>Send</button>
+</form>
+<p id="msg" role="status"></p>
+<script>
+// Replace with your n8n production webhook URL (never put API keys in this file).
+const WEBHOOK_URL = "https://YOUR-INSTANCE.app.n8n.cloud/webhook/lead-intake";
+document.getElementById("f").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const body = Object.fromEntries(new FormData(e.target));
+  if (body.website) return; // honeypot: bots fill this
+  delete body.website;
+  const out = document.getElementById("msg");
+  try {
+    const r = await fetch(WEBHOOK_URL, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+    out.textContent = r.ok ? "Thanks! We'll be in touch shortly." : "Please check your details and try again.";
+    if (r.ok) e.target.reset();
+  } catch { out.textContent = "Network error. Please try again."; }
+});
+</script></body></html>
