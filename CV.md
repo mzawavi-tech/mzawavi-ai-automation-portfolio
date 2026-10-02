@@ -20,7 +20,7 @@ Hands-on experience building and coordinating AI-enabled solutions using modern 
 
 ## PROFESSIONAL EXPERIENCE
 
-### Coordinator – Aviation Fuel Vehicles Maintenance | RB Plant Services Sdn Bhd (PDB, Senai)
+### Coordinator – Aviation Fuel Vehicles Maintenance | RB Plant Services Sdn Bhd (deployed at PDB, Senai Airport)
 **Oct 2026 – Present**
 
 - Coordinate aviation fuel vehicle maintenance-related activities, follow-up and communication across operational, maintenance and support stakeholders.

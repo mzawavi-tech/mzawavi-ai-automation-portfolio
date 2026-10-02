@@ -19,7 +19,8 @@ My strength is connecting **business problems with workable systems and automati
 
 ### Current Role
 
-**Coordinator – Aviation Fuel Vehicles Maintenance | PDB, Senai**  
+**Coordinator – Aviation Fuel Vehicles Maintenance | RB Plant Services Sdn Bhd**  
+Deployed at PDB, Senai Airport.
 Current role involving operational coordination, maintenance-related coordination, documentation, follow-up and communication across stakeholders.
 
 ---
@@ -169,7 +170,7 @@ Deployment / Operations
 
 ## Professional Background
 
-- Coordinator – Aviation Fuel Vehicles Maintenance, PDB, Senai — Current
+- Coordinator – Aviation Fuel Vehicles Maintenance, RB Plant Services Sdn Bhd (deployed at PDB, Senai Airport) — Current
 - HSE Coordinator / Logistics & Facility Executive, RB Plant Services Sdn Bhd
 - Safety Instructor
 - IT Project Management
