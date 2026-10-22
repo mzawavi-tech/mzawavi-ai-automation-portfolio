@@ -1,186 +1,131 @@
-# mzawavi-ai-automation-portfolio
+# AI Automation Portfolio
 
-# Business Systems Analyst | AI Automation & AI Operations
+**Mohamad Zawavi Muda**
+AI Automation & AI Operations Specialist
 
-**Mohamad Zawavi Muda**  
-Business Systems Analyst | AI Automation & AI Operations
-
-Malaysia | Remote | Available for International / USD-based Roles
+Malaysia | Remote | Open to international, USD-based roles
 
 ---
 
-## Professional Positioning
+## 📄 CV
 
-Business and systems professional combining long-term IT, business analysis, operations, HSE, logistics and hands-on AI automation experience.
+**[View My CV](CV.md)** — browser-readable CV for recruiters and hiring managers.
 
-I focus on understanding business requirements, mapping processes, identifying gaps, designing practical workflows, coordinating implementation, and using AI/automation to improve operational efficiency.
+## 💼 Remote Job Application Template
 
-My strength is connecting **business problems with workable systems and automation** rather than focusing only on software development.
+**[Open Job Application Kit](REMOTE_JOB_APPLICATION_TEMPLATE.md)** — profile summaries, cover notes and checklists for local, remote and freelance (USD) applications.
 
-### Current Role
+---
 
-**Coordinator | RB Plant Services Sdn Bhd**  
-Deployed at PDB, Senai Airport.
-Current role involving operational coordination, aviation fuel vehicle maintenance coordination, documentation, follow-up and communication across stakeholders.
+## ⭐ Featured: FleetCare PPM/CM — Live Production System
+
+A fleet maintenance system I designed and delivered for the airport aviation fuel terminal where I work as maintenance coordinator. It replaced paper and double data entry across two Excel workbooks with one mobile web app, and has been in daily production use since October 2026.
+
+- Technicians log breakdowns and preventive-maintenance checklists once, on their phone
+- Live availability (x/5 units), schedule board, PPM monitor and computed alerts
+- Contract time limits per task with late flags and penalty estimates
+- Client reports exported as `.xlsx` in the client's existing layout
+- Three years of messy Excel history cleaned and migrated
+- Node.js, Express, SQLite, PWA, ExcelJS, Google Calendar, Nginx/PM2 on a VPS; built with Claude Code
+
+**[▶ Try the interactive demo](https://mzawavi-tech.github.io/mzawavi-ai-automation-portfolio/projects/fleet-maintenance-ppm-cm/demo/)** (fictional data) · **[Read the case study](projects/fleet-maintenance-ppm-cm/README.md)**
+
+---
+
+## About
+
+I build practical automation and AI-assisted software for business processes. My focus is turning a business requirement into a clear workflow, wiring it together with APIs and webhooks, using LLMs where they add value, and keeping a human in control of anything customer-facing.
+
+This repository is a **sanitized portfolio**. It contains conceptual workflow designs with fictional data. It does not contain source code, credentials, or data from any real project. See [`docs/README.md`](docs/README.md).
 
 ---
 
 ## Core Skills
 
-### Business Systems & Analysis
-
-- Business requirements gathering
-- AS-IS / TO-BE process analysis
-- Process mapping
-- Gap analysis
-- Business rules and exception handling
-- Workflow design
-- UAT and acceptance thinking
-- Process improvement
-- Documentation and reporting
-- Cross-functional coordination
-
-### AI & Automation
-
-- AI-assisted business workflows
-- AI agents and LLM workflows
-- Claude Code
-- Codex
-- DeepSeek
-- Prompt and workflow engineering
-- Workflow automation
-- AI-assisted software development
-- Business process automation
-
-### Integration & Technology
-
-- REST APIs
-- Webhooks
-- Event-driven workflows
-- Node.js / Express
-- Next.js
-- TypeScript / JavaScript
-- Supabase / PostgreSQL
-- SQLite
-- Git / GitHub
-- WhatsApp Cloud API
-- OCR
-
-### Operations
-
-- HSE coordination
-- Logistics coordination
-- Facility coordination
-- Maintenance coordination
-- Project coordination
-- Vendor / contractor coordination
-- Operational documentation
-- KPI and reporting support
+| Area | Skills |
+|---|---|
+| **AI & AI-assisted development** | Claude Code, Codex, DeepSeek, LLM workflow design, AI agents, prompt engineering |
+| **AI Infrastructure** | MCP, AI-to-execution bridges, tool integration, task orchestration |
+| **AI Marketing & Growth** | Customer pain/VOC, marketing angles, emotional triggers, TOFU/MOFU/BOFU, campaign strategy, AI-assisted research, Meta Ads strategy and optimisation workflows |
+| **Automation & integration** | Workflow automation, business process automation, REST APIs, webhooks, event-driven design, data validation and transformation |
+| **Development** | Node.js / Express, TypeScript, JavaScript, PWA, ExcelJS, Git / GitHub, Linux VPS (Nginx, PM2) |
+| **Data** | Supabase, PostgreSQL, SQLite |
+| **Domain** | Fleet and maintenance operations (aviation fuel), HSE, logistics, banking IT, B2B SaaS |
 
 ---
 
-## Selected Projects
+## AI Marketing & Growth Systems
 
-### 1. Referly — B2B Referral & Affiliate SaaS
+I use structured AI-assisted workflows to connect customer insight, campaign strategy, creative development and optimisation.
 
-A B2B referral platform designed to automate customer referral, registration, booking and reward workflows.
+- **Customer & market research:** customer avatar, pain-point analysis, Voice of Customer (VOC), competitor/market research and insight extraction.
+- **Strategy:** emotional triggers, marketing angles, awareness levels and TOFU / MOFU / BOFU funnel planning.
+- **Campaign execution:** campaign planning, CW development, offer / CTA design, hooks, copywriting and creative/poster briefs.
+- **Meta Ads:** campaign structure, audience strategy, creative testing, performance analysis and optimisation workflows.
+- **AI specialist workflows:** GPTWORKPRO workflows and Claude specialist skills for research, marketing execution and iterative optimisation.
 
-**Workflow:**
-
-Customer → Registration → Referral → Booking → Reward
-
-**Technology:** Next.js, TypeScript, Supabase, PostgreSQL, Puck CMS
-
-**Business / automation focus:**
-
-- Requirements and workflow design
-- Referral-code resolution
-- Customer registration
-- Member → Agent upgrade
-- Booking workflow
-- Reward calculation
-- Admin dashboard
-
-> Production source code and private business data are intentionally not published in this portfolio.
-
-### 2. MiraAI — AI Knowledge & Workflow Platform
-
-A modular AI platform designed around knowledge management, AI agents and workflow automation.
-
-**Architecture areas:**
-
-- Knowledge Engine
-- Learning Engine
-- Workflow Engine
-- Agent Engine
-- Connector Hub
-- Import Engine
-
-**Technology:** Node.js, Express, SQLite, LLM APIs, WhatsApp Cloud API, OCR
-
-**Workflow:**
-
-Knowledge Import → OCR → Knowledge Storage → AI Retrieval → Response
-
-### 3. MiraAI SHO Tutor
-
-An AI-assisted learning platform for structured learning, assessment and exam preparation.
-
-**Core components:**
-
-- Tutor Engine
-- Domain Model
-- LLM Abstraction
-- Evaluator
-- Learning / Attempt Tracking
-- CLI
-- Seed Content
-
-**Technology:** Node.js, DeepSeek, OpenAI-compatible API architecture, GitHub, AI coding agents
-
-### 4. TinnyBridge / MCP Integration
-
-A practical bridge for connecting AI coding workflows with local development tooling and MCP-based execution workflows.
-
-Focus areas include AI-assisted development, tool integration, execution handoff and developer workflow automation.
+The goal is to turn a business objective into a repeatable workflow from **research → strategy → creative → ads → analysis → optimisation**.
 
 ---
 
-## AI-Assisted Business Systems Workflow
+## Workflow Examples
+
+Each example is a design write-up with fictional data, not a deployed system.
+
+| Example | What it shows |
+|---|---|
+| [Lead processing](examples/lead-processing-workflow.md) | Capture, validation, enrichment, AI classification, qualification, human review, outreach |
+| [AI reply approval](examples/ai-reply-approval-workflow.md) | Classifying prospect replies, drafting responses with AI, human approval before sending |
+| [Webhook automation](examples/webhook-automation-workflow.md) | Payload validation, transformation, business rules, retries, error handling, logging |
+
+The [architecture overview](architecture/README.md) describes the general pattern the examples follow.
+
+---
+
+## Project Experience (High Level)
+
+These are projects I have worked on. Source code and implementation details are private and intentionally not published here.
+
+- **FleetCare PPM/CM (live in production)** — maintenance management system for an airport refueller fleet: breakdown and PM workflows, contract SLA tracking, automated client reports and data migration. [Case study](projects/fleet-maintenance-ppm-cm/README.md) · [Demo](https://mzawavi-tech.github.io/mzawavi-ai-automation-portfolio/projects/fleet-maintenance-ppm-cm/demo/)
+- **GPTWORKPRO** — an AI-assisted business and workflow system combining reusable knowledge assets, specialist AI workflows and execution-oriented automation.
+- **Referly** — a B2B referral and affiliate SaaS covering referral, registration, booking and reward workflows.
+- **MiraAI** — an AI knowledge and workflow platform built around knowledge management, AI agents and workflow automation.
+- **MiraAI SHO Tutor** — an AI-assisted tutoring system for structured learning and exam preparation.
+- **AI Marketing Skill Pack** — eight connected Claude skills (research, strategy, content, copy, poster, Meta Ads, performance analysis) packaged as a sellable product.
+- **AI Video Ad Editor** — a Claude skill that turns raw footage into 9:16 ad videos with hooks, captions and motion graphics using ffmpeg.
+- **AI operations dashboard and Meta Ads agent** — a personal AI assistant dashboard (tasks, ideas, live ad numbers) used to run Facebook-to-WhatsApp lead campaigns for my own service business.
+- **TinnyBridge MCP** — a custom MCP bridge for connecting AI coding workflows with a local execution environment, including task execution, result retrieval and recovery handling.
+
+---
+
+## Working Approach
 
 ```text
-Business Requirement
-        ↓
-AS-IS / TO-BE Analysis
-        ↓
-Process & Workflow Design
-        ↓
-AI / Automation Opportunity
-        ↓
-AI-Assisted Implementation
-        ↓
-Testing / UAT
-        ↓
-GitHub
-        ↓
-Deployment / Operations
+Business requirement
+  → Market / customer research
+  → Pain / VOC / strategy
+  → Workflow design
+  → AI-assisted implementation (Claude Code, Codex, DeepSeek)
+  → MCP / tool integration
+  → Testing and review
+  → Git / GitHub
+  → Data / performance analysis
+  → Optimisation
 ```
+
+I use AI coding and specialist tools to move faster, while reviewing, testing and documenting what they produce.
 
 ---
 
-## Professional Background
+## Scope and Honesty Note
 
-- Coordinator, RB Plant Services Sdn Bhd (deployed at PDB, Senai Airport) — Current
-- HSE Coordinator / Logistics & Facility Executive, RB Plant Services Sdn Bhd
-- Safety Instructor
-- IT Project Management
-- IT Assistant Manager
-- Material Control & Purchasing
-- Business coaching and digital business operations
+The FleetCare demo is a working prototype of a real production system, rebuilt with fictional data. The workflow examples are conceptual. Tools such as n8n, Zapier, Make, Lindy, Clay, Apollo or Instantly are not part of this repository, and nothing here claims production experience with them. The concepts shown (webhooks, REST APIs, validation, retries, human review, logging) are what I would apply on any of those platforms.
+
+The marketing capabilities described above reflect AI-assisted strategy and workflow design. Specific production ad-spend results or platform-scale claims are not stated unless documented separately.
 
 ---
 
 ## Contact
 
-**Email:** mzawavi@gmail.com  
-**GitHub:** https://github.com/mzawavi-tech
+- Email: mzawavi@gmail.com
+- GitHub: https://github.com/mzawavi-tech/mzawavi-ai-automation-portfolio

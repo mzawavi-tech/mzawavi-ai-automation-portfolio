@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>FleetCare PPM/CM</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Interactive prototype of a preventive and corrective maintenance system for an airport refueller fleet. Fictional data.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: control-room console. Top bar with role switch, tab strip, one working panel; detail opens in a side drawer. */
+:root{
+  --bg:#eef1f3; --surface:#ffffff; --sunk:#e3e8ec; --line:#cdd5dc; --ink:#14202b; --muted:#566573;
+  --accent:#1f5f8b; --accent-ink:#ffffff; --accent-soft:#dbe8f2;
+  --good:#1e7a45; --good-soft:#dcf0e3; --warn:#9a5b00; --warn-soft:#fbecd2; --bad:#b0281f; --bad-soft:#fbe1de;
+  --tA:#ffffff; --tA-ink:#14202b; --tB:#cdebd3; --tB-ink:#14532d; --tC:#fbe9a6; --tC-ink:#5c4400; --tD:#f6c2bd; --tD-ink:#7a1d15; --tW:#d4e4f7; --tW-ink:#1b3f66;
+  --display:"Barlow Condensed","Arial Narrow",sans-serif; --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f161c; --surface:#17212a; --sunk:#111a21; --line:#2b3a47; --ink:#e4ebf1; --muted:#97a7b5;
+  --accent:#6fb1e0; --accent-ink:#06192a; --accent-soft:#183247;
+  --good:#6fd39a; --good-soft:#143323; --warn:#f0b35a; --warn-soft:#3a2a10; --bad:#ff8f84; --bad-soft:#3f1b18;
+  --tA:#26323c; --tA-ink:#e4ebf1; --tB:#1d3b27; --tB-ink:#a6e3b7; --tC:#3d3412; --tC-ink:#f3dc8a; --tD:#47201c; --tD-ink:#ffb4ab; --tW:#1b2f45; --tW-ink:#a9cdf2;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f161c; --surface:#17212a; --sunk:#111a21; --line:#2b3a47; --ink:#e4ebf1; --muted:#97a7b5;
+  --accent:#6fb1e0; --accent-ink:#06192a; --accent-soft:#183247;
+  --good:#6fd39a; --good-soft:#143323; --warn:#f0b35a; --warn-soft:#3a2a10; --bad:#ff8f84; --bad-soft:#3f1b18;
+  --tA:#26323c; --tA-ink:#e4ebf1; --tB:#1d3b27; --tB-ink:#a6e3b7; --tC:#3d3412; --tC-ink:#f3dc8a; --tD:#47201c; --tD-ink:#ffb4ab; --tW:#1b2f45; --tW-ink:#a9cdf2;
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;
+  padding-block:16px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body.lock{overflow:hidden}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:.01em}
+h1{font-size:clamp(26px,5vw,36px);line-height:1}
+h2{font-size:22px}
+h3{font-size:18px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:7px 12px;font-weight:500}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+button.danger{color:var(--bad);border-color:var(--bad)}
+button:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input,select,textarea{background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:7px 9px;min-width:0;width:100%}
+textarea{min-height:64px;resize:vertical}
+label.f{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:var(--muted);font-weight:500}
+.mono{font-family:var(--mono);font-size:.92em}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.num{font-variant-numeric:tabular-nums}
+
+/* top bar */
+.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 18px}
+.brand{display:flex;flex-direction:column;gap:4px}
+.brand .sub{color:var(--muted);font-size:14px}
+.demo-flag{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;background:var(--warn-soft);color:var(--warn);border-radius:4px;padding:2px 7px;align-self:flex-start}
+.roles{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.roles .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-right:2px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;border-radius:0;padding:7px 11px;background:transparent}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink)}
+.clock{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+
+.tabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--line);scrollbar-width:thin}
+.tabs button{border:0;border-bottom:3px solid transparent;border-radius:0;background:none;padding:9px 12px;color:var(--muted);white-space:nowrap;font-weight:600}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent)}
+.tabs .cnt{font-family:var(--mono);font-size:11px;background:var(--bad-soft);color:var(--bad);border-radius:999px;padding:1px 6px;margin-left:5px}
+
+.panel{display:flex;flex-direction:column;gap:14px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.box-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 12px}
+.grid2{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:14px}
+@media (max-width:860px){.grid2{grid-template-columns:1fr}}
+
+/* KPI strip */
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.kpi b{font-family:var(--display);font-size:30px;line-height:1.05;font-variant-numeric:tabular-nums}
+.kpi span{font-size:12.5px;color:var(--muted)}
+.kpi.bad{border-color:var(--bad)} .kpi.bad b{color:var(--bad)}
+.kpi.warn{border-color:var(--warn)} .kpi.warn b{color:var(--warn)}
+.kpi.good b{color:var(--good)}
+
+/* alerts */
+.alerts{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.alerts li{display:grid;grid-template-columns:6px minmax(0,1fr);gap:10px;align-items:stretch;background:var(--sunk);border-radius:6px;padding:8px 10px 8px 0;font-size:14px}
+.alerts li::before{content:"";border-radius:0 3px 3px 0;background:var(--muted)}
+.alerts li.bad::before{background:var(--bad)} .alerts li.warn::before{background:var(--warn)} .alerts li.info::before{background:var(--accent)}
+.alerts li small{display:block;color:var(--muted);font-size:12.5px}
+
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:7px 9px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--sunk);font-weight:600}
+tr:last-child td{border-bottom:0}
+td{background:var(--surface)}
+td.wrap{white-space:normal;min-width:200px}
+tr.click{cursor:pointer} tr.click:hover td{background:var(--accent-soft)}
+
+/* schedule board */
+.board td,.board th{text-align:center;padding:5px 4px}
+.board th:first-child,.board td:first-child{text-align:left;padding-left:9px}
+.cell{display:inline-flex;align-items:center;justify-content:center;gap:3px;width:42px;height:30px;border-radius:5px;border:1px solid var(--line);font-family:var(--mono);font-size:12.5px;font-weight:500}
+button.cell{padding:0}
+.cell.cur{outline:2px solid var(--accent);outline-offset:1px}
+.tA{background:var(--tA);color:var(--tA-ink)} .tB{background:var(--tB);color:var(--tB-ink)} .tC{background:var(--tC);color:var(--tC-ink)} .tD{background:var(--tD);color:var(--tD-ink)} .tW{background:var(--tW);color:var(--tW-ink)}
+.ic{font-size:11px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted);align-items:center}
+.legend .cell{width:26px;height:20px;font-size:11px}
+
+/* pills */
+.pill{display:inline-block;border-radius:4px;padding:1px 7px;font-size:12px;font-weight:600;background:var(--sunk);color:var(--ink);border:1px solid var(--line)}
+.pill.good{background:var(--good-soft);color:var(--good);border-color:transparent}
+.pill.warn{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.pill.bad{background:var(--bad-soft);color:var(--bad);border-color:transparent}
+.pill.info{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.cat{font-family:var(--mono);font-size:11.5px;border-radius:3px;padding:1px 5px;background:var(--sunk);border:1px solid var(--line)}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.toolbar select,.toolbar input{width:auto}
+.note{font-size:13px;color:var(--muted);background:var(--sunk);border-radius:6px;padding:8px 10px}
+.lock-note{font-size:13px;background:var(--warn-soft);color:var(--warn);border-radius:6px;padding:8px 10px}
+
+/* vehicle cards */
+.vcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:10px}
+.vcard{text-align:left;display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:9px;background:var(--surface);border:1px solid var(--line);width:100%}
+.vcard .id{font-family:var(--display);font-size:24px;line-height:1}
+.vcard.gr{border-color:var(--bad)}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(10,18,26,.45);z-index:30}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--bg);z-index:31;overflow-y:auto;border-left:1px solid var(--line);
+  padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(32px + env(safe-area-inset-bottom,0px));padding-left:16px;padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:12px}
+.d-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.rows{display:grid;grid-template-columns:minmax(110px,140px) minmax(0,1fr);gap:5px 12px;font-size:14px}
+.rows dt{color:var(--muted)} .rows dd{margin:0;overflow-wrap:anywhere}
+.check{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
+.check li{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:8px;align-items:center;padding:6px 8px;background:var(--surface);border:1px solid var(--line);border-radius:6px;font-size:14px}
+.check li input[type=checkbox]{width:18px;height:18px;margin:0}
+.check li input.q{width:84px}
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (max-width:460px){.fgrid{grid-template-columns:1fr}}
+.timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.timeline li{border-left:3px solid var(--accent);padding:4px 0 4px 10px;font-size:14px}
+.timeline li small{display:block;color:var(--muted)}
+.items{display:flex;flex-direction:column;gap:8px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:6px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:9px 15px;border-radius:7px;z-index:40;font-weight:500;max-width:calc(100% - 32px)}
+
+/* how it works */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13.5px}
+.flow span{background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:6px 9px}
+.flow i{color:var(--muted);font-style:normal}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:860px){.cols3{grid-template-columns:1fr}}
+ul.plain{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+footer{color:var(--muted);font-size:12.5px;text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <span class="demo-flag">Prototype · fictional data</span>
+      <h1>FleetCare PPM/CM</h1>
+      <div class="sub">Maintenance console for 5 aviation refuellers at an airport fuel terminal</div>
+    </div>
+    <div class="roles">
+      <span class="lbl">View as</span>
+      <div class="seg" id="roles" role="group" aria-label="User role"></div>
+      <span class="clock" id="clock"></span>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Sections"></nav>
+  <main class="panel" id="panel" aria-live="polite"></main>
+  <footer>Prototype of a system in production use. All units, people, order numbers and rates here are invented. <button id="reset" style="margin-left:6px;padding:3px 9px;font-size:12px">Reset demo</button></footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-label="Details"></aside>
+
+<script>
+(function(){
+"use strict";
+/* ---------- fixed demo clock ---------- */
+var TODAY="2026-10-23", YEAR=2026, CUR_M=10;
+var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var H_OPS=16, PENALTY=500; // operating hours per day; demo penalty per late day per unit (configurable)
+
+/* ---------- master lists ---------- */
+var VEH=[
+  {id:"RF-201",type:"Refueller 40 kL",series:"L",rot:"ABAADAABAACA"},
+  {id:"RF-202",type:"Refueller 40 kL",series:"L",rot:"BAADAABAACAA"},
+  {id:"RF-203",type:"Refueller 40 kL",series:"L",rot:"AADAABAACAAB"},
+  {id:"RF-204",type:"Refueller 40 kL",series:"L",rot:"ADAABAACAABA"},
+  {id:"RF-110",type:"Hydrant dispenser",series:"S",rot:"DAABAACAABAA"}
+];
+var TASK={
+  W:{name:"Weekly interlock & bonding",limitH:null},
+  A:{name:"PM Task A · monthly",limitH:24},
+  B:{name:"PM Task B · 3-monthly",limitH:48},
+  C:{name:"PM Task C · 6-monthly",limitH:48},
+  D:{name:"PM Task D · 12-monthly",limitH:72}
+};
+var CHECK={
+  W:[["Bonding cable continuity"],["Bonding clip"],["Bonding insulation layer"],["Wire terminal"],["Stowage point"],["Interlock visual & function test"]],
+  A:[["Lights: signal, tail, head (replace bulbs as needed)"],["Tyres: pressure and tread"],["Brake air system leak check"],["Deadman control function"],["Fire extinguishers in date"],["Fuel filter water drain"],["Hose reel and nozzle visual"],["Emergency stop test"]],
+  B:[["Engine oil change","L"],["Oil filter","pcs"],["Bypass filter","pcs"],["Fuel filter","pcs"],["Gearbox top-up","L"],["Hydraulic top-up","L"]],
+  C:[["Water separator","pcs"],["Air dryer filter","pcs"],["Gearbox filter","pcs"],["Hydraulic filter","pcs"]],
+  D:[["Hydraulic oil change","L"],["Coolant change","L"],["Air filter","pcs"],["Full chassis lubrication"]]
+};
+function checklistFor(code){
+  if(code==="W") return CHECK.W;
+  var list=CHECK.A.slice();
+  if("BCD".indexOf(code)>=0) list=list.concat(CHECK.B);
+  if("CD".indexOf(code)>=0) list=list.concat(CHECK.C);
+  if(code==="D") list=list.concat(CHECK.D);
+  return list;
+}
+var KIT={L:{B:{"Engine oil (L)":35,"Oil filter":2,"Bypass filter":1,"Fuel filter":1},C:{"Engine oil (L)":35,"Oil filter":2,"Bypass filter":1,"Fuel filter":1,"Water separator":1,"Air dryer filter":1,"Wiper":2},D:{"Engine oil (L)":35,"Oil filter":3,"Fuel filter":1,"Air dryer filter":1,"Water separator":1,"Gearbox filter":2,"Gearbox oil (L)":40,"Hydraulic filter":1}},
+         S:{B:{"Engine oil (L)":7,"Oil filter":1,"Fuel filter":1},C:{"Engine oil (L)":9,"Oil filter":1,"Fuel filter":1},D:{"Engine oil (L)":7,"Oil filter":1,"Fuel filter":1,"Air filter":1,"Hydraulic oil (L)":70,"Coolant (L)":5}}};
+var CATS=[
+  {g:"Engine / chassis",c:"MECH",n:"Chassis mechanical"},{g:"Engine / chassis",c:"ENG",n:"Engine"},{g:"Engine / chassis",c:"AIRC",n:"Cab air-con"},
+  {g:"Engine / chassis",c:"ELEC",n:"Vehicle electrical"},{g:"Engine / chassis",c:"MISC",n:"Other chassis"},
+  {g:"Refuelling",c:"HYDR",n:"Refuel hydraulics"},{g:"Refuelling",c:"PNEU",n:"Pneumatics"},{g:"Refuelling",c:"ELEC-R",n:"Refuel electrical / interlock"},
+  {g:"Refuelling",c:"INST",n:"Instruments"},{g:"Refuelling",c:"REFU",n:"Refuel components"},{g:"Refuelling",c:"MISC-R",n:"Other refuel"}
+];
+var CM_STATUS=["Reported","Under repair","Awaiting parts","Awaiting third party","Monitoring","Closed"];
+var TECHS=["Amir","Hafiz","Daniel","Kumar"];
+var ROLES=[{k:"tech",l:"Technician",who:"Amir"},{k:"coord",l:"Coordinator",who:"Coordinator"},{k:"client",l:"Client",who:"Client rep"}];
+
+/* ---------- seed data ---------- */
+function seed(){
+  var pm={}, mo=90815700;
+  VEH.forEach(function(v,vi){
+    for(var m=1;m<=12;m++){
+      var code=v.rot[m-1], key=v.id+"-"+m, r={veh:v.id,m:m,code:code,mo:"",moStart:"",moEnd:"",aStart:"",aEnd:"",status:"Not started",checks:{},qty:{},by:""};
+      if(m<CUR_M){
+        var d=3+vi*4, dur=code==="A"?1:code==="D"?3:2;
+        r.mo=String(mo++); r.moStart=ymd(YEAR,m,d); r.moEnd=ymd(YEAR,m,d+dur);
+        r.aStart=r.moStart+"T08:00"; r.aEnd=ymd(YEAR,m,d+(m===6&&vi===2?dur+1:dur-1))+"T"+(m===6&&vi===2?"17:00":"16:30");
+        r.status="Done"; r.by=TECHS[(m+vi)%4]; checklistFor(code).forEach(function(_,i){r.checks[i]=true});
+      }
+      pm[key]=r;
+    }
+  });
+  // October: RF-202 done, RF-203 in progress, RF-201 order received, RF-204 (grounded) and RF-110 not started
+  var o=function(id){return pm[id+"-10"]};
+  Object.assign(o("RF-202"),{mo:"90820031",moStart:"2026-10-05",moEnd:"2026-10-07",aStart:"2026-10-05T08:00",aEnd:"2026-10-06T15:30",status:"Done",by:"Hafiz"});
+  checklistFor("C").forEach(function(_,i){o("RF-202").checks[i]=true});
+  Object.assign(o("RF-203"),{mo:"90820054",moStart:"2026-10-22",moEnd:"2026-10-23",aStart:"2026-10-22T09:00",aEnd:"",status:"In progress",by:"Daniel"});
+  [0,1,2,3,4].forEach(function(i){o("RF-203").checks[i]=true});
+  Object.assign(o("RF-201"),{mo:"90820061",moStart:"2026-10-26",moEnd:"2026-10-27"});
+
+  var weeks=[["2026-09-29","2026-10-05"],["2026-10-06","2026-10-12"],["2026-10-13","2026-10-19"],["2026-10-20","2026-10-26"],["2026-10-27","2026-11-02"]];
+  var wk=[], wmo=90820100;
+  weeks.forEach(function(w,wi){
+    VEH.forEach(function(v,vi){
+      var r={id:"W"+wi+"-"+v.id,veh:v.id,week:wi,mo:wi<4?String(wmo++):"",moStart:w[0],moEnd:w[1],aEnd:"",ohm:"",status:"Not started",checks:{},by:""};
+      if(wi<3 || (wi===3 && vi<3)){
+        r.status="Done"; r.aEnd=addDays(w[0],2); r.ohm=(4+((vi*7+wi*3)%9)).toFixed(1); r.by=TECHS[(wi+vi)%4];
+        CHECK.W.forEach(function(_,i){r.checks[i]=true});
+      }
+      if(wi===3 && v.id==="RF-204"){ r.status="Under maintenance"; }
+      wk.push(r);
+    });
+  });
+
+  var cms=[
+    {no:"CM-0412",veh:"RF-204",reported:"2026-10-21T07:40",by:"Operator (night shift)",grounded:true,gAt:"2026-10-21T07:40",rAt:"",status:"Awaiting parts",
+      items:[{cat:"HYDR",fault:"Hydraulic hose leaking at PTO outlet",repair:"",parts:"Hydraulic hose 1\" x 1.2 m",cost:"",payer:"Client stock",tech:["Kumar"]}],
+      log:[{at:"2026-10-21T09:15",tech:["Kumar"],work:"Isolated leak, hose cracked at crimp. Unit grounded.",status:"Under repair"},
+           {at:"2026-10-22T10:00",tech:["Kumar","Amir"],work:"Hose not in client stock. Purchase request raised.",status:"Awaiting parts"}]},
+    {no:"CM-0411",veh:"RF-201",reported:"2026-10-19T14:05",by:"Operator (day shift)",grounded:false,gAt:"",rAt:"",status:"Monitoring",
+      items:[{cat:"ELEC-R",fault:"Interlock indicator flickers during hose reel rewind",repair:"Cleaned and re-crimped relay connector",parts:"",cost:"",payer:"Contractor",tech:["Amir"]}],
+      log:[{at:"2026-10-19T15:00",tech:["Amir"],work:"Re-crimped interlock relay connector. Monitoring for 3 days.",status:"Monitoring"}]},
+    {no:"CM-0410",veh:"RF-202",reported:"2026-10-14T06:50",by:"Operator (night shift)",grounded:true,gAt:"2026-10-14T06:50",rAt:"2026-10-14T13:20",status:"Closed",
+      items:[{cat:"MECH",fault:"Rear tyre worn below limit (axle 2)",repair:"Replaced 2 tyres 315/80",parts:"Tyre 315/80 x2",cost:"0",payer:"Client stock",tech:["Hafiz","Daniel"]}],
+      log:[{at:"2026-10-14T13:20",tech:["Hafiz","Daniel"],work:"Replaced 2 tyres, torque checked, released.",status:"Closed"}]},
+    {no:"CM-0409",veh:"RF-110",reported:"2026-10-08T10:30",by:"Operator (day shift)",grounded:false,gAt:"",rAt:"",status:"Closed",
+      items:[{cat:"AIRC",fault:"Cab air-con not cooling",repair:"Replaced receiver dryer, recharged gas",parts:"Receiver dryer x1, R134a",cost:"380",payer:"Contractor",tech:["Daniel"]}],
+      log:[{at:"2026-10-09T11:00",tech:["Daniel"],work:"Replaced receiver dryer and recharged gas.",status:"Closed"}]},
+    {no:"CM-0405",veh:"RF-203",reported:"2026-09-26T08:10",by:"Operator (day shift)",grounded:true,gAt:"2026-09-26T08:10",rAt:"2026-09-27T12:00",status:"Closed",
+      items:[{cat:"REFU",fault:"Nozzle nose seal leaking",repair:"Replaced nose seal kit",parts:"Nose seal kit x1",cost:"0",payer:"Client stock",tech:["Amir"]}],
+      log:[{at:"2026-09-27T12:00",tech:["Amir"],work:"Replaced nose seal, leak test passed.",status:"Closed"}]}
+  ];
+  return {pm:pm,wk:wk,cms:cms,seq:413,role:"coord",tab:"dash",audit:[]};
+}
+
+/* ---------- helpers ---------- */
+function pad(n){return String(n).padStart(2,"0")}
+function ymd(y,m,d){var dt=new Date(Date.UTC(y,m-1,d));return dt.getUTCFullYear()+"-"+pad(dt.getUTCMonth()+1)+"-"+pad(dt.getUTCDate())}
+function addDays(s,n){var p=s.split("-");return ymd(+p[0],+p[1],+p[2]+n)}
+function fmtD(s){if(!s)return "—";var p=s.slice(0,10).split("-");return +p[2]+" "+MONTHS[+p[1]-1]}
+function fmtDT(s){if(!s)return "—";return fmtD(s)+(s.length>10?", "+s.slice(11,16):"")}
+function hoursBetween(a,b){return (new Date(b)-new Date(a))/36e5}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function nowStamp(){return TODAY+"T"+new Date().toTimeString().slice(0,5)}
+function daysLeftInMonth(){return new Date(Date.UTC(YEAR,CUR_M,0)).getUTCDate()-(+TODAY.slice(8,10))}
+var $=function(id){return document.getElementById(id)};
+
+/* ---------- state ---------- */
+var KEY="fleetcare-demo-v1", S;
+try{S=JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){S=null}
+if(!S||!S.pm) S=seed();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function role(){return S.role}
+function can(action){
+  var r=role();
+  if(r==="client") return action==="view";
+  if(r==="tech") return ["view","reportCM","updateCM","doPM","doWeekly"].indexOf(action)>=0;
+  return true;
+}
+function audit(msg){S.audit.unshift({at:nowStamp(),who:ROLES.filter(function(r){return r.k===role()})[0].who,msg:msg});S.audit=S.audit.slice(0,40)}
+
+/* ---------- derived ---------- */
+function pmRec(v,m){return S.pm[v+"-"+m]}
+function pmState(r){
+  if(r.status==="Done") return "done";
+  if(r.aStart) return "prog";
+  if(r.m<CUR_M) return "missed";
+  return r.m===CUR_M?"due":"future";
+}
+function pmDuration(r){if(!r.aStart||!r.aEnd)return null;return hoursBetween(r.aStart,r.aEnd)}
+function pmLate(r){var h=pmDuration(r),lim=TASK[r.code].limitH;if(h==null||!lim)return 0;return h>lim?Math.ceil((h-lim)/24):0}
+function openCM(v){return S.cms.filter(function(c){return c.status!=="Closed"&&(!v||c.veh===v)})}
+function groundedCM(v){return S.cms.filter(function(c){return c.grounded&&!c.rAt&&c.status!=="Closed"&&c.veh===v})[0]}
+function unitState(v){
+  if(groundedCM(v)) return {k:"Grounded",cls:"bad"};
+  var r=pmRec(v,CUR_M); if(r.status==="In progress"&&!r.aEnd) return {k:"In PM",cls:"warn"};
+  return {k:"Available",cls:"good"};
+}
+function curWeek(){return S.wk.filter(function(w){return w.moStart<=TODAY&&w.moEnd>=TODAY})}
+function weekIdx(){var c=curWeek();return c.length?c[0].week:3}
+
+function alerts(){
+  var out=[], left=daysLeftInMonth(), d=+TODAY.slice(8,10);
+  VEH.forEach(function(v){
+    var g=groundedCM(v.id);
+    if(g) out.push({cls:"bad",t:v.id+" grounded since "+fmtDT(g.gAt),s:g.no+" · "+g.items[0].fault+" · "+g.status});
+  });
+  VEH.forEach(function(v){
+    var r=pmRec(v.id,CUR_M);
+    if(r.status!=="Done"){
+      var sev=left<=3?"bad":(d>=20?"warn":"info");
+      out.push({cls:sev,t:v.id+" "+TASK[r.code].name+" not complete",s:(r.mo?"MO "+r.mo+" · ":"No MO received yet · ")+left+" days left in "+MONTHS[CUR_M-1]});
+    }
+    if(r.aStart&&!r.aEnd&&TASK[r.code].limitH){
+      var h=hoursBetween(r.aStart,TODAY+"T08:00");
+      if(h>TASK[r.code].limitH) out.push({cls:"bad",t:v.id+" PM over the "+TASK[r.code].limitH+" h limit",s:"Running "+Math.round(h)+" h. Estimated penalty RM "+(Math.ceil((h-TASK[r.code].limitH)/24)*PENALTY).toLocaleString()});
+    }
+  });
+  var wk=curWeek().filter(function(w){return w.status==="Not started"});
+  if(wk.length) out.push({cls:"warn",t:wk.length+(wk.length===1?" weekly check":" weekly checks")+" pending this week",s:wk.map(function(w){return w.veh}).join(", ")+" · window ends "+fmtD(curWeek()[0].moEnd)});
+  if(d>=15){
+    var nm=CUR_M+1, need=stockNeeds(nm), names=Object.keys(need);
+    if(names.length) out.push({cls:"info",t:"Prepare stock for "+MONTHS[nm-1]+" PM",s:names.map(function(n){return n+" "+need[n]}).join(", ")});
+  }
+  return out;
+}
+function stockNeeds(m){
+  var tot={};
+  VEH.forEach(function(v){var c=v.rot[m-1];if(c==="A")return;var k=KIT[v.series][c];Object.keys(k).forEach(function(n){tot[n]=(tot[n]||0)+k[n]})});
+  return tot;
+}
+function availabilityMonth(){
+  // availability % = 1 - (PM hours + CM hours) / (units x operating hours x days), clipped to month-to-date
+  var days=+TODAY.slice(8,10), total=VEH.length*H_OPS*days, down=0, from=YEAR+"-"+pad(CUR_M)+"-01T00:00", to=TODAY+"T23:59";
+  function clip(a,b){if(!a)return 0;var s=a<from?from:a,e=(b&&b<to)?b:TODAY+"T16:00";if(e<=s)return 0;return Math.min(hoursBetween(s,e),H_OPS*Math.ceil(hoursBetween(s,e)/24))*(H_OPS/24)}
+  VEH.forEach(function(v){var r=pmRec(v.id,CUR_M);if(r.aStart)down+=clip(r.aStart,r.aEnd)});
+  S.cms.forEach(function(c){if(c.grounded)down+=clip(c.gAt,c.rAt)});
+  return {pct:Math.max(0,100*(1-down/total)),down:down,total:total};
+}
+
+/* ---------- rendering ---------- */
+var TABS=[{k:"dash",l:"Dashboard"},{k:"ppm",l:"PPM monitor"},{k:"cm",l:"Breakdowns (CM)"},{k:"units",l:"Units"},{k:"reports",l:"Reports"},{k:"about",l:"How it works"}];
+function renderChrome(){
+  $("roles").innerHTML=ROLES.map(function(r){return '<button type="button" data-role="'+r.k+'" aria-pressed="'+(S.role===r.k)+'">'+r.l+'</button>'}).join("");
+  $("clock").textContent="Demo date: "+fmtD(TODAY)+" "+YEAR;
+  var oc=openCM().length;
+  $("tabs").innerHTML=TABS.map(function(t){return '<button type="button" role="tab" data-tab="'+t.k+'" aria-selected="'+(S.tab===t.k)+'">'+t.l+(t.k==="cm"&&oc?'<span class="cnt">'+oc+'</span>':'')+'</button>'}).join("");
+}
+function render(){
+  renderChrome();
+  var f={dash:vDash,ppm:vPPM,cm:vCM,units:vUnits,reports:vReports,about:vAbout}[S.tab]||vDash;
+  $("panel").innerHTML=roleNote()+f();
+}
+function roleNote(){
+  if(S.role==="client") return '<div class="lock-note">Client view: you can see status and reports, but you cannot change any record.</div>';
+  if(S.role==="tech") return '<div class="note">Technician view: report breakdowns, log repair work and tick PM checklists. Closing a breakdown and editing MO dates are for the coordinator.</div>';
+  return "";
+}
+function cellHTML(v,m,clickable){
+  var r=pmRec(v,m), st=pmState(r), ic={done:"✓",prog:"◔",missed:"!",due:"•",future:""}[st];
+  var tag=clickable?"button":"span";
+  var lbl=v+" "+MONTHS[m-1]+" Task "+r.code+": "+{done:"done",prog:"in progress",missed:"missed",due:"not started",future:"scheduled"}[st];
+  return '<'+tag+(clickable?' type="button" data-pm="'+v+'-'+m+'"':'')+' class="cell t'+r.code+(m===CUR_M?' cur':'')+'" title="'+lbl+'" aria-label="'+lbl+'">'+r.code+(ic?'<span class="ic">'+ic+'</span>':'')+'</'+tag+'>';
+}
+function board(clickable){
+  var h='<div class="tw"><table class="board"><thead><tr><th>Unit</th>'+MONTHS.map(function(m){return "<th>"+m+"</th>"}).join("")+'</tr></thead><tbody>';
+  VEH.forEach(function(v){h+='<tr><td><b>'+v.id+'</b></td>';for(var m=1;m<=12;m++)h+='<td>'+cellHTML(v.id,m,clickable)+'</td>';h+='</tr>'});
+  return h+'</tbody></table></div><div class="legend"><span class="cell tA">A</span>monthly <span class="cell tB">B</span>3-monthly <span class="cell tC">C</span>6-monthly <span class="cell tD">D</span>12-monthly <span>✓ done · ◔ in progress · • due · ! missed</span></div>';
+}
+function pmStatusPill(r){
+  var st=pmState(r);
+  return {done:'<span class="pill good">Done</span>',prog:'<span class="pill warn">In progress</span>',missed:'<span class="pill bad">Missed</span>',due:'<span class="pill">Not started</span>',future:'<span class="pill">Scheduled</span>'}[st];
+}
+function vDash(){
+  var avail=VEH.filter(function(v){return !groundedCM(v.id)}).length, gr=VEH.length-avail;
+  var pmDone=VEH.filter(function(v){return pmRec(v.id,CUR_M).status==="Done"}).length;
+  var cw=curWeek(), wDone=cw.filter(function(w){return w.status==="Done"}).length;
+  var al=alerts();
+  var h='<section class="kpis">'+
+    kpi(avail+"/"+VEH.length,"Units available",gr?"bad":"good")+
+    kpi(gr,"Grounded",gr?"bad":"")+
+    kpi(pmDone+"/"+VEH.length,MONTHS[CUR_M-1]+" PM complete",pmDone<VEH.length&&daysLeftInMonth()<=10?"warn":"")+
+    kpi(wDone+"/"+VEH.length,"Weekly checks this week",wDone<VEH.length?"warn":"good")+
+    kpi(openCM().length,"Open breakdowns","")+'</section>';
+  h+='<section class="box"><div class="box-head"><h2>Unit status</h2><span class="muted small">Tap a unit for its history</span></div><div class="vcards">'+VEH.map(function(v){
+    var u=unitState(v.id), r=pmRec(v.id,CUR_M);
+    return '<button type="button" class="vcard'+(u.k==="Grounded"?" gr":"")+'" data-unit="'+v.id+'"><span class="id">'+v.id+'</span><span class="small muted">'+v.type+'</span><span><span class="pill '+u.cls+'">'+u.k+'</span> <span class="cell t'+r.code+'" style="width:auto;height:auto;padding:1px 6px;font-size:11.5px">'+MONTHS[CUR_M-1]+' '+r.code+'</span></span></button>';
+  }).join("")+'</div></section>';
+  h+='<div class="grid2"><section class="box"><div class="box-head"><h2>PM schedule board '+YEAR+'</h2><span class="muted small">Tap a cell to open the order</span></div>'+board(true)+'</section>';
+  h+='<section class="box"><div class="box-head"><h2>Alerts</h2><span class="muted small">'+al.length+' items, calculated from records</span></div><ul class="alerts">'+(al.length?al.map(function(a){return '<li class="'+a.cls+'"><div>'+esc(a.t)+'<small>'+esc(a.s)+'</small></div></li>'}).join(""):'<li class="info"><div>Nothing needs attention.</div></li>')+'</ul></section></div>';
+  h+='<section class="box"><div class="box-head"><h2>'+MONTHS[CUR_M-1]+' PM tracker</h2><span class="muted small">Contract limits: A 24 h · B/C 48 h · D 72 h</span></div>'+pmTable(CUR_M)+'</section>';
+  return h;
+}
+function kpi(v,l,cls){return '<div class="kpi '+(cls||"")+'"><b>'+v+'</b><span>'+l+'</span></div>'}
+function pmTable(m){
+  var h='<div class="tw"><table><thead><tr><th>Unit</th><th>Task</th><th>MO</th><th>MO window</th><th>Actual start</th><th>Actual end</th><th class="num">Hours</th><th>Status</th><th>Penalty est.</th></tr></thead><tbody>';
+  VEH.forEach(function(v){
+    var r=pmRec(v.id,m), dur=pmDuration(r), late=pmLate(r);
+    h+='<tr class="click" data-pm="'+v.id+'-'+m+'"><td><b>'+v.id+'</b></td><td><span class="cell t'+r.code+'" style="width:26px;height:22px">'+r.code+'</span></td><td class="mono">'+(r.mo||"—")+'</td><td>'+(r.moStart?fmtD(r.moStart)+" – "+fmtD(r.moEnd):"—")+'</td><td>'+fmtDT(r.aStart)+'</td><td>'+fmtDT(r.aEnd)+'</td><td class="num">'+(dur==null?"—":dur.toFixed(1))+'</td><td>'+pmStatusPill(r)+'</td><td>'+(late?'<span class="pill bad">RM '+(late*PENALTY).toLocaleString()+'</span>':'—')+'</td></tr>';
+  });
+  return h+'</tbody></table></div>';
+}
+
+/* PPM monitor */
+var ppmFilter="all";
+function vPPM(){
+  var weeks=[0,1,2,3,4];
+  var h='<section class="box"><div class="box-head"><h2>PPM monitor · '+MONTHS[CUR_M-1]+' '+YEAR+'</h2><div class="toolbar"><select id="ppmf" aria-label="Filter"><option value="all"'+(ppmFilter==="all"?" selected":"")+'>All</option><option value="open"'+(ppmFilter==="open"?" selected":"")+'>Not done only</option></select>'+
+    (can("bulkWeekly")?'<button type="button" id="bulkW">Mark this week done for all units</button>':'')+'</div></div>';
+  h+='<p class="muted small" style="margin:0">One row per unit. Weekly interlock and bonding orders on the left, the monthly task on the right. Tap any cell to open the order and its checklist.</p>';
+  h+='<div class="tw"><table class="board"><thead><tr><th>Unit</th>'+weeks.map(function(w){var r=S.wk.filter(function(x){return x.week===w})[0];return '<th>Wk '+fmtD(r.moStart)+'</th>'}).join("")+'<th>'+MONTHS[CUR_M-1]+' task</th></tr></thead><tbody>';
+  VEH.forEach(function(v){
+    var rows=S.wk.filter(function(w){return w.veh===v.id}), pr=pmRec(v.id,CUR_M);
+    var open=rows.some(function(w){return w.status==="Not started"&&w.moStart<=TODAY})||pr.status!=="Done";
+    if(ppmFilter==="open"&&!open) return;
+    h+='<tr><td><b>'+v.id+'</b></td>'+rows.map(function(w){
+      var st=w.status==="Done"?"✓":w.status==="Under maintenance"?"UM":w.moStart>TODAY?"":(w.moEnd<TODAY?"!":"•");
+      return '<td><button type="button" class="cell tW" data-wk="'+w.id+'" title="'+v.id+' weekly '+fmtD(w.moStart)+': '+w.status+'" style="width:46px">'+(st||"W")+'</button></td>';
+    }).join("")+'<td>'+cellHTML(v.id,CUR_M,true)+'</td></tr>';
+  });
+  h+='</tbody></table></div><div class="legend"><span>✓ done · • open in window · ! window passed · UM under maintenance (not counted as missed)</span></div>';
+  var all=S.wk.filter(function(w){return w.moEnd<=TODAY||w.status==="Done"}), ok=all.filter(function(w){return w.status==="Done"||w.status==="Under maintenance"}).length;
+  var pmd=VEH.filter(function(v){return pmRec(v.id,CUR_M).status==="Done"}).length;
+  h+='<div class="kpis" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">'+kpi(Math.round(100*pmd/VEH.length)+"%","Monthly PM compliance","")+kpi((all.length?Math.round(100*ok/all.length):100)+"%","Weekly compliance (closed windows)","")+'</div></section>';
+  h+='<section class="box"><h2>Stock needed for '+MONTHS[CUR_M]+'</h2><p class="muted small" style="margin:0">Generated on the 15th from next month\'s B, C and D tasks so parts are ready before the unit is taken.</p>'+stockTable(CUR_M+1)+'</section>';
+  return h;
+}
+function stockTable(m){
+  var n=stockNeeds(m), k=Object.keys(n), who=VEH.filter(function(v){return v.rot[m-1]!=="A"}).map(function(v){return v.id+" "+v.rot[m-1]}).join(", ");
+  if(!k.length) return '<p class="muted">Only Task A next month. No kit needed.</p>';
+  return '<p class="small" style="margin:0">Tasks: <b>'+who+'</b></p><div class="tw"><table><thead><tr><th>Item</th><th class="num">Qty</th></tr></thead><tbody>'+k.map(function(x){return '<tr><td>'+x+'</td><td class="num">'+n[x]+'</td></tr>'}).join("")+'</tbody></table></div>';
+}
+
+/* CM */
+var cmF={status:"open",cat:"",veh:""};
+function vCM(){
+  var list=S.cms.filter(function(c){
+    if(cmF.status==="open"&&c.status==="Closed")return false;
+    if(cmF.status==="closed"&&c.status!=="Closed")return false;
+    if(cmF.veh&&c.veh!==cmF.veh)return false;
+    if(cmF.cat&&!c.items.some(function(i){return i.cat===cmF.cat}))return false;
+    return true;
+  });
+  var h='<section class="box"><div class="box-head"><h2>Breakdowns (corrective maintenance)</h2>'+(can("reportCM")?'<button type="button" class="primary" id="newCM">Report a breakdown</button>':'')+'</div>';
+  h+='<div class="toolbar"><select id="cmS" aria-label="Status"><option value="open">Open</option><option value="closed">Closed</option><option value="all">All</option></select>'+
+     '<select id="cmV" aria-label="Unit"><option value="">All units</option>'+VEH.map(function(v){return '<option>'+v.id+'</option>'}).join("")+'</select>'+
+     '<select id="cmC" aria-label="Category"><option value="">All categories</option>'+CATS.map(function(c){return '<option value="'+c.c+'">'+c.c+' · '+c.n+'</option>'}).join("")+'</select></div>';
+  h+='<div class="tw"><table><thead><tr><th>No.</th><th>Unit</th><th>Reported</th><th>Fault</th><th>Category</th><th>Grounded</th><th>Status</th></tr></thead><tbody>'+
+    (list.length?list.map(function(c){
+      var g=c.grounded?(c.rAt?"Released "+fmtDT(c.rAt):'<span class="pill bad">Grounded</span>'):"No";
+      var st=c.status==="Closed"?"good":c.status==="Monitoring"?"info":"warn";
+      return '<tr class="click" data-cm="'+c.no+'"><td class="mono">'+c.no+'</td><td><b>'+c.veh+'</b></td><td>'+fmtDT(c.reported)+'</td><td class="wrap">'+esc(c.items.map(function(i){return i.fault}).join("; "))+'</td><td>'+c.items.map(function(i){return '<span class="cat">'+i.cat+'</span>'}).join(" ")+'</td><td>'+g+'</td><td><span class="pill '+st+'">'+c.status+'</span></td></tr>';
+    }).join(""):'<tr><td colspan="7" class="muted">No breakdowns match these filters.</td></tr>')+'</tbody></table></div>';
+  h+='<p class="muted small" style="margin:0">Categories are picked from a fixed list of 11 codes in two groups (engine/chassis and refuelling). Old Excel records had this column empty for 330+ rows.</p></section>';
+  return h;
+}
+
+/* Units */
+function vUnits(){
+  return '<section class="box"><h2>Units</h2><div class="vcards">'+VEH.map(function(v){
+    var u=unitState(v.id), n=S.cms.filter(function(c){return c.veh===v.id}).length;
+    return '<button type="button" class="vcard'+(u.k==="Grounded"?" gr":"")+'" data-unit="'+v.id+'"><span class="id">'+v.id+'</span><span class="small muted">'+v.type+'</span><span><span class="pill '+u.cls+'">'+u.k+'</span></span><span class="small muted">'+n+' breakdowns on record</span></button>';
+  }).join("")+'</div></section>';
+}
+
+/* Reports */
+function vReports(){
+  var a=availabilityMonth(), gr=VEH.filter(function(v){return groundedCM(v.id)}).length;
+  var h='<section class="kpis" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">'+kpi(a.pct.toFixed(1)+"%","Fleet availability, "+MONTHS[CUR_M-1]+" to date","")+kpi((VEH.length-gr)+"/"+VEH.length,"Availability today","")+kpi(a.down.toFixed(0)+" h","Downtime (PM + CM)","")+'</section>';
+  h+='<section class="box"><h2>How availability is calculated</h2><p class="mono small" style="margin:0;overflow-x:auto;white-space:nowrap">availability = 1 − (PM hours + CM hours) ÷ (units × '+H_OPS+' operating hours × days)</p><p class="muted small" style="margin:0">The old spreadsheet divided by one unit\'s PM-hours cell instead of the number of units, which produced #DIV/0! whenever that unit had no PM. The system uses the real unit count.</p></section>';
+  h+='<section class="box"><div class="box-head"><h2>Daily report preview · '+fmtD(TODAY)+'</h2><span class="muted small">Production exports this as .xlsx in the client\'s existing layout</span></div>';
+  h+='<h3>1. Daily corrective maintenance</h3><div class="tw"><table><thead><tr><th>Date</th><th>Unit</th><th>Order type</th><th>Status</th><th>Work done</th><th>Repaired by</th></tr></thead><tbody>';
+  var rows=[]; S.cms.forEach(function(c){c.log.forEach(function(l){if(l.at.slice(0,7)===TODAY.slice(0,7))rows.push({c:c,l:l})})});
+  rows.sort(function(x,y){return x.l.at<y.l.at?1:-1});
+  h+=rows.map(function(r){return '<tr><td>'+fmtDT(r.l.at)+'</td><td>'+r.c.veh+'</td><td class="mono">REM</td><td>'+r.l.status+'</td><td class="wrap">'+esc(r.l.work)+'</td><td>'+esc(r.l.tech.join(", "))+'</td></tr>'}).join("")+'</tbody></table></div>';
+  h+='<h3>2. Grounded units</h3><div class="tw"><table><thead><tr><th>Unit</th><th>Fault</th><th>Since</th><th>Latest status</th></tr></thead><tbody>'+
+    (S.cms.filter(function(c){return c.grounded&&!c.rAt&&c.status!=="Closed"}).map(function(c){return '<tr><td>'+c.veh+'</td><td class="wrap">'+esc(c.items[0].fault)+'</td><td>'+fmtDT(c.gAt)+'</td><td>'+c.status+'</td></tr>'}).join("")||'<tr><td colspan="4" class="muted">No units grounded.</td></tr>')+
+    '</tbody></table></div><p class="small" style="margin:0"><b>Availability: '+(VEH.length-gr)+'/'+VEH.length+'</b></p>';
+  h+='<h3>3. Preventive maintenance (weekly + monthly)</h3><div class="tw"><table><thead><tr><th>Unit</th><th>Type</th><th>Start</th><th>Completed</th><th>Status</th></tr></thead><tbody>';
+  var pmRows=[];
+  VEH.forEach(function(v){var r=pmRec(v.id,CUR_M);if(r.moStart)pmRows.push([r.moStart,v.id,"Task "+r.code+" · monthly",r.aStart,r.aEnd,r.status])});
+  S.wk.forEach(function(w){if(w.moStart.slice(0,7)===TODAY.slice(0,7)&&w.moStart<=TODAY)pmRows.push([w.moStart,w.veh,"Weekly",w.moStart,w.aEnd,w.status])});
+  pmRows.sort(function(x,y){return x[0]<y[0]?-1:1});
+  h+=pmRows.map(function(r){return '<tr><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+fmtD(r[3])+'</td><td>'+fmtD(r[4])+'</td><td>'+r[5]+'</td></tr>'}).join("")+'</tbody></table></div>';
+  h+='<p class="small" style="margin:0">Completed: <b>'+pmRows.filter(function(r){return r[5]==="Done"}).length+'</b> of '+pmRows.length+'</p></section>';
+  h+='<section class="box"><h2>Audit log</h2>'+(S.audit.length?'<ul class="timeline">'+S.audit.map(function(a){return '<li>'+esc(a.msg)+'<small>'+esc(a.who)+' · '+fmtDT(a.at)+'</small></li>'}).join("")+'</ul>':'<p class="muted" style="margin:0">Changes you make in this demo appear here with who and when. Records are never deleted, only cancelled with a reason.</p>')+'</section>';
+  return h;
+}
+
+/* About */
+function vAbout(){
+  return '<section class="box"><h2>The problem</h2><p style="margin:0;max-width:70ch">A contractor maintains five aviation refuellers at an airport fuel terminal for an oil-company client. Every breakdown and service was written on paper, then typed twice into two Excel workbooks: a daily report with one sheet per month (38 sheets since 2023) and a vehicle-availability tracker. Task names were spelled up to six ways, the fault-category column was empty, dates were stored as text and misread by Excel, and one formula produced #DIV/0! every month. Late preventive maintenance carries a daily contract penalty, yet nobody could see early which unit was behind.</p></section>'+
+  '<div class="cols3"><section class="box"><h3>What the system does</h3><ul class="plain small"><li>Technicians log breakdowns and PM checklists once, on their phone</li><li>Grounded status and x/5 availability update themselves</li><li>Schedule board, PPM monitor and alerts show what is due or late</li><li>Contract time limits per task, with penalty estimates</li><li>Stock list for next month\'s major services</li><li>Daily report and trackers exported in the client\'s existing Excel layout</li><li>Calendar events for every maintenance order</li></ul></section>'+
+  '<section class="box"><h3>Rules built in</h3><ul class="plain small"><li>Units, task codes, categories and people come from fixed lists</li><li>A breakdown cannot close without a repair, a category per item, who repaired it and a release time</li><li>A PM cannot be marked done until every checklist item is answered</li><li>Bonding reading of 25 Ω or more fails the check and opens a breakdown</li><li>Release must be after grounding; one PM in progress per unit</li><li>Three roles; the client account is read-only; every change is audited</li></ul></section>'+
+  '<section class="box"><h3>Stack (production)</h3><ul class="plain small"><li>Node.js + Express</li><li>SQLite with typed dates, daily backup</li><li>Mobile-first PWA, added to home screen</li><li>ExcelJS to reproduce the client\'s templates</li><li>Google Calendar / .ics for order alerts</li><li>Nginx + PM2 on an existing Debian VPS, HTTPS</li><li>Import script for 3 years of Excel history with a review list</li></ul></section></div>'+
+  '<section class="box"><h3>Delivery</h3><div class="flow"><span>Interview the work &amp; read 3 years of Excel</span><i>→</i><span>Spec: roles, master lists, data model, rules</span><i>→</i><span>Build with AI coding agents</span><i>→</i><span>Import &amp; clean history</span><i>→</i><span>Acceptance tests on real month data</span><i>→</i><span>Live on site</span></div><p class="muted small" style="margin:0">Designed, specified and delivered by the site maintenance coordinator. This page is a standalone prototype with invented data; the production system and its data are private.</p></section>';
+}
+
+/* ---------- drawers ---------- */
+function openDrawer(html){$("drawer").innerHTML=html;$("drawer").hidden=false;$("scrim").hidden=false;document.body.classList.add("lock");var b=$("drawer").querySelector("[data-close]");if(b)b.focus()}
+function closeDrawer(){$("drawer").hidden=true;$("scrim").hidden=true;document.body.classList.remove("lock");drawerCtx=null}
+var drawerCtx=null;
+function head(t,sub){return '<div class="d-head"><div><h2>'+t+'</h2>'+(sub?'<div class="muted small">'+sub+'</div>':'')+'</div><button type="button" data-close>Close</button></div>'}
+
+function drawPM(key){
+  drawerCtx={k:"pm",key:key};
+  var r=S.pm[key], list=checklistFor(r.code), coord=can("editMO"), tech=can("doPM"), ro=!tech||r.status==="Done";
+  var dur=pmDuration(r), late=pmLate(r), answered=list.filter(function(_,i){return r.checks[i]}).length;
+  var h=head(r.veh+" · "+TASK[r.code].name,MONTHS[r.m-1]+" "+YEAR+" · limit "+TASK[r.code].limitH+" h")+'<div>'+pmStatusPill(r)+'</div>';
+  h+='<section class="box"><h3>Maintenance order (from client scheduler)</h3><div class="fgrid">'+
+    '<label class="f">MO number<input id="f-mo" class="mono" value="'+esc(r.mo)+'" '+(coord&&r.status!=="Done"?'':'disabled')+' placeholder="8 digits"></label>'+
+    '<label class="f">MO start<input id="f-ms" type="date" value="'+r.moStart+'" '+(coord&&r.status!=="Done"?'':'disabled')+'></label>'+
+    '<label class="f">MO end<input id="f-me" type="date" value="'+r.moEnd+'" '+(coord&&r.status!=="Done"?'':'disabled')+'></label></div>'+
+    (coord?'':'<p class="muted small" style="margin:0">MO dates are entered by the coordinator from the client\'s order.</p>')+'</section>';
+  h+='<section class="box"><h3>Actual work</h3><div class="fgrid">'+
+    '<label class="f">Actual start<input id="f-as" type="datetime-local" value="'+r.aStart+'" '+(ro?'disabled':'')+'></label>'+
+    '<label class="f">Actual end<input id="f-ae" type="datetime-local" value="'+r.aEnd+'" '+(ro?'disabled':'')+'></label></div>'+
+    '<p class="small" style="margin:0">Duration: <b class="num">'+(dur==null?"—":dur.toFixed(1)+" h")+'</b>'+(late?' · <span class="pill bad">Over limit by '+late+' day(s), est. RM '+(late*PENALTY).toLocaleString()+'</span>':'')+'</p></section>';
+  h+='<section class="box"><div class="box-head"><h3>Checklist</h3><span class="small muted num">'+answered+'/'+list.length+' answered</span></div><ul class="check">'+list.map(function(it,i){
+    return '<li><input type="checkbox" id="ck'+i+'" data-ck="'+i+'" '+(r.checks[i]?"checked":"")+' '+(ro?'disabled':'')+'><label for="ck'+i+'">'+it[0]+'</label>'+(it[1]?'<input class="q num" data-q="'+i+'" inputmode="decimal" placeholder="'+it[1]+'" value="'+esc(r.qty[i]||"")+'" '+(ro?'disabled':'')+' aria-label="Quantity '+it[1]+'">':'<span></span>')+'</li>';
+  }).join("")+'</ul></section>';
+  if(!ro) h+='<div class="toolbar"><button type="button" class="primary" id="pmSave">Save</button><button type="button" id="pmDone"'+(answered<list.length?' title="Answer every checklist item first"':'')+'>Mark done</button></div>';
+  else if(r.status==="Done") h+='<p class="note" style="margin:0">Completed by '+esc(r.by||"technician")+'. Done records are locked.</p>';
+  openDrawer(h);
+}
+function pmSave(done){
+  var r=S.pm[drawerCtx.key], list=checklistFor(r.code);
+  if(can("editMO")){var mo=$("f-mo").value.trim();if(mo&&!/^\d{8}$/.test(mo))return toast("MO number must be 8 digits.");r.mo=mo;r.moStart=$("f-ms").value;r.moEnd=$("f-me").value;if(r.moStart&&r.moEnd&&r.moEnd<r.moStart)return toast("MO end must be on or after MO start.")}
+  var as=$("f-as").value, ae=$("f-ae").value;
+  if(ae&&!as) return toast("Enter the actual start before the end.");
+  if(as&&ae&&ae<=as) return toast("Actual end must be after actual start.");
+  if((as&&as.slice(0,10)>TODAY)||(ae&&ae.slice(0,10)>TODAY)) return toast("Dates cannot be in the future.");
+  r.aStart=as; r.aEnd=ae;
+  document.querySelectorAll("[data-ck]").forEach(function(c){r.checks[c.getAttribute("data-ck")]=c.checked});
+  document.querySelectorAll("[data-q]").forEach(function(q){r.qty[q.getAttribute("data-q")]=q.value.trim()});
+  if(done){
+    var missing=list.filter(function(_,i){return !r.checks[i]}).length;
+    if(missing) return toast(missing+" checklist item(s) still open.");
+    if(!r.aStart||!r.aEnd) return toast("Enter actual start and end before marking done.");
+    r.status="Done"; r.by=ROLES.filter(function(x){return x.k===role()})[0].who;
+    audit(r.veh+" "+MONTHS[r.m-1]+" Task "+r.code+" marked done"+(pmLate(r)?" (late "+pmLate(r)+" day)":""));
+    toast("Marked done.");
+  } else {
+    if(r.aStart&&r.status!=="Done") r.status="In progress";
+    audit(r.veh+" "+MONTHS[r.m-1]+" Task "+r.code+" updated"); toast("Saved.");
+  }
+  save(); render(); drawPM(drawerCtx.key);
+}
+
+function drawWK(id){
+  drawerCtx={k:"wk",id:id};
+  var w=S.wk.filter(function(x){return x.id===id})[0], ro=!can("doWeekly")||w.status==="Done"||w.moStart>TODAY;
+  var h=head(w.veh+" · weekly interlock & bonding","Window "+fmtD(w.moStart)+" – "+fmtD(w.moEnd)+(w.mo?" · MO "+w.mo:""));
+  h+='<div><span class="pill '+(w.status==="Done"?"good":w.status==="Under maintenance"?"info":"warn")+'">'+w.status+'</span></div>';
+  if(w.moStart>TODAY) h+='<p class="note" style="margin:0">This window has not opened yet.</p>';
+  h+='<section class="box"><h3>Checks</h3><ul class="check">'+CHECK.W.map(function(it,i){return '<li><input type="checkbox" id="wk'+i+'" data-ck="'+i+'" '+(w.checks[i]?"checked":"")+' '+(ro?"disabled":"")+'><label for="wk'+i+'">'+it[0]+'</label><span></span></li>'}).join("")+'</ul>'+
+    '<div class="fgrid"><label class="f">Continuity reading, clip to chassis (Ω)<input id="f-ohm" inputmode="decimal" value="'+esc(w.ohm)+'" '+(ro?"disabled":"")+'></label><label class="f">Completed on<input id="f-wd" type="date" value="'+(w.aEnd||TODAY)+'" '+(ro?"disabled":"")+'></label></div>'+
+    '<p class="muted small" style="margin:0">Standard: under 25 Ω. A reading of 25 Ω or more fails the check and opens a breakdown automatically.</p></section>';
+  if(!ro) h+='<div class="toolbar"><button type="button" class="primary" id="wkDone">Submit check</button></div>';
+  openDrawer(h);
+}
+function wkDone(){
+  var w=S.wk.filter(function(x){return x.id===drawerCtx.id})[0];
+  var ohm=parseFloat($("f-ohm").value), d=$("f-wd").value;
+  var all=[].every.call(document.querySelectorAll("[data-ck]"),function(c){return c.checked});
+  if(isNaN(ohm)) return toast("Enter the continuity reading in ohms.");
+  if(!d||d>TODAY) return toast("Completion date cannot be empty or in the future.");
+  w.ohm=ohm.toFixed(1); w.aEnd=d; CHECK.W.forEach(function(_,i){w.checks[i]=document.querySelector('[data-ck="'+i+'"]').checked});
+  if(ohm>=25){
+    var no=newCM(w.veh,false,[{cat:"ELEC-R",fault:"Bonding continuity "+ohm.toFixed(1)+" Ω (limit < 25 Ω) on weekly check",repair:"",parts:"",cost:"",payer:"",tech:[]}],"Weekly check");
+    w.status="Failed"; audit(w.veh+" weekly check failed at "+ohm.toFixed(1)+" Ω, "+no+" opened");
+    save(); closeDrawer(); render(); return toast("Failed at "+ohm.toFixed(1)+" Ω. "+no+" opened.");
+  }
+  if(!all) return toast("Tick every check before submitting.");
+  w.status="Done"; w.by=ROLES.filter(function(x){return x.k===role()})[0].who; audit(w.veh+" weekly check done ("+w.ohm+" Ω)");
+  save(); closeDrawer(); render(); toast("Weekly check recorded.");
+}
+function bulkWeekly(){
+  var n=0; curWeek().forEach(function(w){if(w.status==="Not started"){w.status="Done";w.aEnd=TODAY;w.ohm="6.0";w.by="Coordinator";CHECK.W.forEach(function(_,i){w.checks[i]=true});n++}});
+  audit("Weekly checks marked done for "+n+" unit(s)"); save(); render(); toast(n?n+" weekly check(s) marked done.":"Nothing pending this week.");
+}
+
+function newCM(veh,grounded,items,by){
+  var no="CM-0"+(S.seq++), at=nowStamp();
+  S.cms.unshift({no:no,veh:veh,reported:at,by:by,grounded:grounded,gAt:grounded?at:"",rAt:"",status:"Reported",items:items,log:[]});
+  return no;
+}
+function drawNewCM(){
+  drawerCtx={k:"newcm"};
+  var h=head("Report a breakdown","Takes under 2 minutes on a phone")+'<section class="box"><div class="fgrid">'+
+    '<label class="f">Unit<select id="n-v">'+VEH.map(function(v){return '<option>'+v.id+'</option>'}).join("")+'</select></label>'+
+    '<label class="f">Reported by<input id="n-by" value="Operator (day shift)"></label></div>'+
+    '<label style="display:flex;gap:8px;align-items:center;font-size:14px"><input type="checkbox" id="n-g" style="width:18px;height:18px"> Unit cannot operate (ground it now)</label></section>'+
+    '<section class="box"><div class="box-head"><h3>Fault items</h3><button type="button" id="addItem">Add another item</button></div><div class="items" id="n-items">'+itemForm(0)+'</div></section>'+
+    '<div class="toolbar"><button type="button" class="primary" id="saveCM">Submit</button></div>';
+  openDrawer(h);
+}
+function catOptions(sel){var g="",h="";CATS.forEach(function(c){if(c.g!==g){if(g)h+="</optgroup>";g=c.g;h+='<optgroup label="'+g+'">'}h+='<option value="'+c.c+'"'+(sel===c.c?" selected":"")+'>'+c.c+' · '+c.n+'</option>'});return h+"</optgroup>"}
+function itemForm(i){return '<div class="item" data-item="'+i+'"><label class="f">Category<select data-f="cat"><option value="">Choose…</option>'+catOptions("")+'</select></label><label class="f">What is wrong<textarea data-f="fault" placeholder="e.g. hose reel not rewinding"></textarea></label></div>'}
+function saveNewCM(){
+  var items=[].map.call(document.querySelectorAll("#n-items .item"),function(el){return {cat:el.querySelector('[data-f=cat]').value,fault:el.querySelector('[data-f=fault]').value.trim(),repair:"",parts:"",cost:"",payer:"",tech:[]}}).filter(function(i){return i.fault});
+  if(!items.length) return toast("Describe at least one fault.");
+  var v=$("n-v").value, g=$("n-g").checked;
+  if(g&&groundedCM(v)) return toast(v+" is already grounded under "+groundedCM(v).no+". Add the fault there.");
+  var no=newCM(v,g,items,$("n-by").value.trim()||"Operator");
+  audit(no+" reported on "+v+(g?" (grounded)":"")); save(); closeDrawer(); S.tab="cm"; render(); drawCM(no); toast(no+" created.");
+}
+
+function drawCM(no){
+  drawerCtx={k:"cm",no:no};
+  var c=S.cms.filter(function(x){return x.no===no})[0], closed=c.status==="Closed", edit=can("updateCM")&&!closed;
+  var h=head(c.no+" · "+c.veh,"Reported "+fmtDT(c.reported)+" by "+esc(c.by));
+  h+='<div class="toolbar"><span class="pill '+(closed?"good":c.status==="Monitoring"?"info":"warn")+'">'+c.status+'</span>'+(c.grounded?(c.rAt?'<span class="pill">Released '+fmtDT(c.rAt)+'</span>':'<span class="pill bad">Grounded since '+fmtDT(c.gAt)+'</span>'):'<span class="pill">Not grounded</span>')+'</div>';
+  h+='<section class="box"><h3>Fault items</h3><div class="items">'+c.items.map(function(it,i){
+    return '<div class="item" data-ci="'+i+'"><div class="fgrid"><label class="f">Category<select data-f="cat" '+(edit?"":"disabled")+'><option value="">Choose…</option>'+catOptions(it.cat)+'</select></label><label class="f">Cost borne by<select data-f="payer" '+(edit?"":"disabled")+'>'+["","Client stock","Purchased (client)","Contractor"].map(function(p){return '<option'+(it.payer===p?" selected":"")+'>'+p+'</option>'}).join("")+'</select></label></div>'+
+      '<div class="small"><b>Fault:</b> '+esc(it.fault)+'</div>'+
+      '<label class="f">Repair done<textarea data-f="repair" '+(edit?"":"disabled")+'>'+esc(it.repair)+'</textarea></label>'+
+      '<div class="fgrid"><label class="f">Parts and quantity<input data-f="parts" value="'+esc(it.parts)+'" '+(edit?"":"disabled")+'></label><label class="f">Repaired by<select data-f="tech" multiple size="2" '+(edit?"":"disabled")+'>'+TECHS.map(function(t){return '<option'+(it.tech.indexOf(t)>=0?" selected":"")+'>'+t+'</option>'}).join("")+'</select></label></div></div>';
+  }).join("")+'</div></section>';
+  h+='<section class="box"><h3>Daily work log</h3>'+(c.log.length?'<ul class="timeline">'+c.log.map(function(l){return '<li>'+esc(l.work)+'<small>'+fmtDT(l.at)+' · '+esc(l.tech.join(", "))+' · '+l.status+'</small></li>'}).join("")+'</ul>':'<p class="muted" style="margin:0">No work logged yet.</p>');
+  if(edit) h+='<div class="fgrid"><label class="f">Work done today<input id="l-w" placeholder="e.g. replaced hose, leak test passed"></label><label class="f">Status after this work<select id="l-s">'+CM_STATUS.slice(1,5).map(function(s){return '<option>'+s+'</option>'}).join("")+'</select></label></div><div class="toolbar"><button type="button" id="addLog">Add to log</button></div>';
+  h+='</section>';
+  if(edit){
+    h+='<div class="toolbar"><button type="button" class="primary" id="cmSave">Save items</button>'+(c.grounded&&!c.rAt?'<button type="button" id="cmRelease">Release unit</button>':'')+(can("closeCM")?'<button type="button" id="cmClose">Close breakdown</button>':'')+'</div>';
+    if(!can("closeCM")) h+='<p class="muted small" style="margin:0">The coordinator closes the breakdown after checking every item.</p>';
+  }
+  openDrawer(h);
+}
+function readItems(c){
+  document.querySelectorAll("[data-ci]").forEach(function(el){
+    var it=c.items[+el.getAttribute("data-ci")];
+    it.cat=el.querySelector('[data-f=cat]').value; it.payer=el.querySelector('[data-f=payer]').value;
+    it.repair=el.querySelector('[data-f=repair]').value.trim(); it.parts=el.querySelector('[data-f=parts]').value.trim();
+    it.tech=[].filter.call(el.querySelector('[data-f=tech]').options,function(o){return o.selected}).map(function(o){return o.value});
+  });
+}
+function cmAct(kind){
+  var c=S.cms.filter(function(x){return x.no===drawerCtx.no})[0];
+  readItems(c);
+  if(kind==="log"){
+    var w=$("l-w").value.trim(); if(!w) return toast("Describe the work done.");
+    var techs=[]; c.items.forEach(function(i){i.tech.forEach(function(t){if(techs.indexOf(t)<0)techs.push(t)})});
+    var st=$("l-s").value; c.log.push({at:nowStamp(),tech:techs.length?techs:[ROLES.filter(function(x){return x.k===role()})[0].who],work:w,status:st}); c.status=st;
+    audit(c.no+" log added: "+st); toast("Added to log.");
+  } else if(kind==="release"){
+    c.rAt=nowStamp(); audit(c.veh+" released ("+c.no+")"); toast(c.veh+" is available again.");
+  } else if(kind==="close"){
+    var miss=[];
+    c.items.forEach(function(i,n){if(!i.cat)miss.push("category for item "+(n+1));if(!i.repair)miss.push("repair for item "+(n+1));if(!i.tech.length)miss.push("who repaired item "+(n+1))});
+    if(!c.log.length) miss.push("at least one work log entry");
+    if(c.grounded&&!c.rAt) miss.push("release time");
+    if(miss.length){save();return toast("Cannot close yet. Missing: "+miss.join(", ")+".")}
+    c.status="Closed"; audit(c.no+" closed"); toast(c.no+" closed.");
+  } else { audit(c.no+" items updated"); toast("Saved."); }
+  save(); render(); drawCM(c.no);
+}
+
+function drawUnit(id){
+  drawerCtx={k:"unit",id:id};
+  var v=VEH.filter(function(x){return x.id===id})[0], u=unitState(id);
+  var h=head(id,v.type)+'<div><span class="pill '+u.cls+'">'+u.k+'</span></div>';
+  h+='<section class="box"><h3>PM this year</h3><div class="toolbar">'+[1,2,3,4,5,6,7,8,9,10,11,12].map(function(m){return cellHTML(id,m,true)}).join("")+'</div></section>';
+  var cms=S.cms.filter(function(c){return c.veh===id});
+  h+='<section class="box"><h3>Breakdown history</h3>'+(cms.length?'<ul class="timeline">'+cms.map(function(c){return '<li><button type="button" data-cm="'+c.no+'" style="padding:2px 7px;font-size:12px">'+c.no+'</button> '+esc(c.items.map(function(i){return i.fault}).join("; "))+'<small>'+fmtDT(c.reported)+' · '+c.items.map(function(i){return i.cat||"uncategorised"}).join(", ")+' · '+c.status+'</small></li>'}).join("")+'</ul>':'<p class="muted" style="margin:0">No breakdowns recorded.</p>')+'<p class="muted small" style="margin:0">In production this view holds the full history back to 2023, imported from the old workbooks.</p></section>';
+  openDrawer(h);
+}
+
+/* ---------- toast ---------- */
+var tt;
+function toast(m){var d=$("toast");if(!d){d=document.createElement("div");d.id="toast";d.className="toast";d.setAttribute("role","status");document.body.appendChild(d)}d.textContent=m;d.hidden=false;clearTimeout(tt);tt=setTimeout(function(){d.hidden=true},3800)}
+
+/* ---------- events ---------- */
+document.addEventListener("click",function(e){
+  var t=e.target.closest("button,tr.click"); if(!t) return;
+  if(t.hasAttribute("data-role")){S.role=t.getAttribute("data-role");save();var ctx=drawerCtx;render();if(ctx)reopen(ctx);return}
+  if(t.hasAttribute("data-tab")){S.tab=t.getAttribute("data-tab");save();render();window.scrollTo(0,0);return}
+  if(t.hasAttribute("data-close")) return closeDrawer();
+  if(t.hasAttribute("data-pm")) return drawPM(t.getAttribute("data-pm"));
+  if(t.hasAttribute("data-wk")) return drawWK(t.getAttribute("data-wk"));
+  if(t.hasAttribute("data-cm")) return drawCM(t.getAttribute("data-cm"));
+  if(t.hasAttribute("data-unit")) return drawUnit(t.getAttribute("data-unit"));
+  switch(t.id){
+    case "newCM": return drawNewCM();
+    case "saveCM": return saveNewCM();
+    case "addItem": var box=$("n-items");box.insertAdjacentHTML("beforeend",itemForm(box.children.length));return;
+    case "pmSave": return pmSave(false);
+    case "pmDone": return pmSave(true);
+    case "wkDone": return wkDone();
+    case "bulkW": return bulkWeekly();
+    case "addLog": return cmAct("log");
+    case "cmSave": return cmAct("save");
+    case "cmRelease": return cmAct("release");
+    case "cmClose": return cmAct("close");
+    case "reset": S=seed();save();closeDrawer();render();return toast("Demo data reset.");
+  }
+});
+function reopen(ctx){({pm:function(){drawPM(ctx.key)},wk:function(){drawWK(ctx.id)},cm:function(){drawCM(ctx.no)},unit:function(){drawUnit(ctx.id)},newcm:function(){can("reportCM")?drawNewCM():closeDrawer()}})[ctx.k]()}
+document.addEventListener("change",function(e){
+  var id=e.target.id;
+  if(id==="ppmf"){ppmFilter=e.target.value;render()}
+  if(id==="cmS"){cmF.status=e.target.value;render();$("cmS").value=cmF.status;$("cmV").value=cmF.veh;$("cmC").value=cmF.cat}
+  if(id==="cmV"){cmF.veh=e.target.value;render();$("cmS").value=cmF.status;$("cmV").value=cmF.veh;$("cmC").value=cmF.cat}
+  if(id==="cmC"){cmF.cat=e.target.value;render();$("cmS").value=cmF.status;$("cmV").value=cmF.veh;$("cmC").value=cmF.cat}
+});
+$("scrim").addEventListener("click",closeDrawer);
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!$("drawer").hidden)closeDrawer()});
+
+var h=(location.hash||"").slice(1); if(TABS.some(function(t){return t.k===h})) S.tab=h;
+render();
+if(S.tab==="cm"){$("cmS").value=cmF.status}
+})();
+</script>
+
+</body>
+</html>
