@@ -2,140 +2,122 @@
 
 ## Business Systems Analyst | AI Automation & AI Operations
 
-**Malaysia | Remote | Open to international / USD-based roles**  
+**Malaysia | Open to on-site, hybrid, remote and freelance (local or USD-based)**  
 **Email:** mzawavi@gmail.com  
-**GitHub Portfolio:** https://github.com/mzawavi-tech/mzawavi-ai-automation-portfolio
+**GitHub Portfolio:** https://github.com/mzawavi-tech/mzawavi-ai-automation-portfolio  
+**Live project demo:** https://mzawavi-tech.github.io/mzawavi-ai-automation-portfolio/projects/fleet-maintenance-ppm-cm/demo/
 
 ---
 
 ## Professional Profile
 
-Business Systems Analyst with an IT project-management background and hands-on experience designing AI-assisted automation, business workflows and software solutions.
+Business Systems Analyst with 14 years of banking IT, IT project management and recent hands-on delivery of AI-assisted business systems.
 
-I specialise in understanding **business requirements and manual processes**, translating them into clear AS-IS / TO-BE workflows, then using AI, automation tools, APIs, webhooks and software platforms to turn those workflows into practical solutions.
+I take a manual, error-prone operation, map the AS-IS process, define the TO-BE workflow and business rules, then deliver a working system using AI coding agents, APIs and automation. My latest system, **FleetCare PPM/CM**, is in daily production use for an airport aviation fuel terminal: it replaced paper and double Excel entry with a mobile web app, automated client reporting and migrated three years of legacy data.
 
-I am not positioned as a pure software developer. My strength is **business analysis + systems thinking + AI-assisted execution**: understanding what the business needs, designing the logic, directing AI/technical tools, reviewing the implementation, testing the workflow and improving it.
+I am not positioned as a pure software developer. My strength is **business analysis + systems thinking + AI-assisted execution**: understanding what the business needs, designing the logic, directing AI and technical tools, reviewing and testing the result, and getting people to use it.
 
 ---
 
-## Core Capabilities
+## Key Achievement
 
-### Business Systems Analysis & Automation
-- Business requirement analysis and process mapping
-- AS-IS / TO-BE workflow design and gap identification
-- Business rules, conditions, exceptions and edge-case thinking
-- Workflow automation and AI-assisted solution design
-- Human-in-the-loop approval and escalation workflows
-- UAT-oriented testing, validation, troubleshooting and documentation
+### FleetCare PPM/CM — Fleet Maintenance System (Live in Production, Oct 2026)
+*Designed and delivered while working as site maintenance coordinator*
 
-### AI & Automation
-- AI-assisted development using Claude Code, Codex and DeepSeek
-- LLM workflow design, AI agents and prompt engineering
-- REST APIs, webhooks and event-driven workflows
-- MCP / Model Context Protocol and AI-to-execution bridges
-- Data validation, transformation, JSON handling and workflow logic
-- AI-assisted research, analysis and iterative optimisation
+- Analysed 3 years of maintenance records across two Excel workbooks (38 monthly sheets) and documented the gaps: duplicate entry, 6 spellings of the same task, empty fault categories in 330+ records, text dates misread by Excel, and a `#DIV/0!` availability formula.
+- Wrote the full specification: 3 user roles, master lists, 6-table data model, 11 fault categories, PM task codes and contract time limits, validation rules, 8 mobile screens and acceptance criteria.
+- Built the system with Claude Code: Node.js/Express, SQLite, mobile PWA, ExcelJS, Google Calendar integration; deployed on a Debian VPS with Nginx and PM2 over HTTPS.
+- Automated the client's Daily Report and Vehicle Availability workbooks in their existing `.xlsx` layout, so the client's process did not need to change.
+- Built live availability (x/5 units), PM schedule board, PPM monitor, SLA late flags with penalty estimates, and a monthly parts list for upcoming services.
+- Designed and ran the migration of Aug 2023 – Oct 2026 history with a review list for uncertain records.
+- Result: technicians record each job once on their phone; reports and availability are generated, not typed.
 
-### n8n / Make Automation — Hands-On Development Track
-- n8n workflow design: triggers, webhooks, nodes, conditions, data mapping and workflow routing
-- AI-powered automation: LLM steps, content generation, classification and human review
-- API / webhook integration and JSON-based data handling
-- Facebook Page content and publishing workflow patterns
-- Lead capture, CRM, Google Sheets, notification and follow-up automation patterns
-- Make scenario concepts: modules, mapping, filters, routers and HTTP/API integration
-- JavaScript fundamentals for custom logic and data transformation
-- Practical client-simulation training focused on production-style workflow thinking and troubleshooting
+[Case study](https://github.com/mzawavi-tech/mzawavi-ai-automation-portfolio/blob/main/projects/fleet-maintenance-ppm-cm/README.md) · [Interactive demo (fictional data)](https://mzawavi-tech.github.io/mzawavi-ai-automation-portfolio/projects/fleet-maintenance-ppm-cm/demo/)
 
-### AI Marketing & Growth Systems
-- Customer avatar, pain-point and Voice of Customer (VOC) analysis
-- Emotional triggers, marketing angles, awareness-level strategy
-- TOFU / MOFU / BOFU funnel and campaign architecture
-- CW, hooks, copywriting, offer / CTA development and creative direction
-- AI-assisted market and competitor research
-- Meta Ads campaign strategy, creative testing, performance analysis and optimisation workflows
-- GPTWORKPRO and Claude specialist workflows for marketing research, execution and optimisation
+---
 
-### Technical / Platform Skills
-- JavaScript / Node.js, TypeScript
-- Git / GitHub
-- Supabase, PostgreSQL, SQLite
-- API and webhook integration concepts
-- B2B SaaS workflow and system architecture
-- n8n / Make — actively building hands-on capability through practical automation projects
+## Professional Experience
+
+### Aviation Vehicles Maintenance Coordinator | RB Plant Services Sdn Bhd (assigned to PETRONAS Dagangan Berhad, Senai Airport)
+**Oct 2026 – Present**
+- Coordinate preventive and corrective maintenance for the aviation refueller fleet with technicians, the client's maintenance and operations teams, and suppliers.
+- Track maintenance orders, PM schedule compliance, grounded units, parts and daily reporting to the client.
+- Designed and delivered the FleetCare PPM/CM system now used for daily maintenance records and client reports.
+
+### Logistics & Facilities Executive | RB Plant Services Sdn Bhd
+**Jun 2026 – Sep 2026**
+- Coordinated logistics, facilities, accommodation, transportation and project support.
+- Worked with project teams, contractors, vendors and site personnel; prepared reports and operational documentation.
+
+### HSE Executive | RB Plant Services Sdn Bhd
+**May 2025 – May 2026**
+- Coordinated HSE activities, documentation, inspections, toolbox talks, inductions and HSE committee meetings.
+- Supported ISO 45001 safety management system documentation, HIRARC risk assessments, KPI reporting and audits.
+
+### Logistics Executive | RB Plant Services Sdn Bhd
+**Jun 2024 – Apr 2025**
+- Coordinated logistics, transportation and project support with site personnel, contractors and vendors.
+
+### Business Owner / Self-Employed
+**2019 – 2024**
+- Ran service and digital businesses: customer operations, marketing, sales funnels and online campaigns.
+
+### Safety Instructor | Ranaco
+**2014 – 2019**
+- Delivered safety training for industrial and oil & gas workforces.
+
+### IT Project Manager | Koperasi Pembiayaan Syariah Angkasa Berhad (KOPSYA)
+**2012 – 2014**
+- Led delivery of a Shariah-compliant financing system (Musyarakah Mutanakisah) used by the parent cooperative and about 500 member cooperatives as clients.
+- Managed requirements, vendors, testing and rollout.
+
+### IT Assistant Manager | Bank Islam Malaysia Berhad
+**1998 – 2012**
+- Long-term IT operations and business systems support in a banking environment: users, systems, requirements and structured problem solving.
 
 ---
 
 ## Selected AI & Automation Projects
 
-### GPTWORKPRO — AI-Assisted Business & Workflow System
-Designed a modular AI workflow approach combining business requirements, reusable knowledge assets, specialist AI skills, workflow orchestration and execution-oriented automation.
-
-### MATFBPRO — Pain-First Marketing Framework
-Built a structured marketing methodology covering customer pain, VOC, emotional triggers, marketing angles, awareness levels, funnel stages, campaign structure, CW, offers and CTA design.
-
-### TinnyBridge MCP — AI Tooling & Execution Bridge
-Built a custom Model Context Protocol (MCP) bridge connecting AI coding workflows with an execution environment, including task execution, result retrieval and recovery handling.
-
-### Referly — B2B Referral & Affiliate SaaS
-Worked on referral, registration, booking, reward and loyalty workflow foundations using Next.js, TypeScript and Supabase.
-
-### MiraAI — AI Knowledge & Workflow Platform
-Worked on knowledge management, AI workflow, agent and connector concepts, including knowledge import, OCR, SQLite knowledge storage and WhatsApp integration architecture.
-
-### MiraAI SHO Tutor — AI-Assisted Learning System
-Developed an AI tutoring architecture for structured learning, quizzes, exam simulation, evaluation and knowledge-driven tutoring workflows.
-
-### n8n Automation Training — AI Content & Facebook Page Workflow
-Hands-on training based on a production-style n8n automation pattern covering scheduled execution, AI content generation, structured output, image-search workflow, data storage, Facebook Page publishing and workflow delay/automation logic. This is part of the ongoing practical development track rather than a claimed client deployment.
+- **FleetCare PPM/CM** — live production maintenance system (see Key Achievement).
+- **Referly** — multi-tenant B2B referral and affiliate SaaS: referral, registration, booking and reward workflows (Next.js, TypeScript, Supabase/PostgreSQL).
+- **MiraAI** — AI knowledge and workflow platform: knowledge import, OCR, SQLite knowledge store, agents and WhatsApp integration architecture (Node.js).
+- **MiraAI SHO Tutor** — AI tutoring and exam-preparation system with tutor engine, evaluator and LLM abstraction.
+- **TinnyBridge MCP** — custom Model Context Protocol bridge connecting AI coding agents to an execution environment, with task execution, result retrieval and recovery.
+- **GPTWORKPRO** — modular AI-assisted business workflow system with reusable knowledge assets and specialist AI skills.
+- **AI Marketing Skill Pack** — 8 connected Claude skills for research, strategy, content, copy, creative, Meta Ads and performance analysis, packaged as a product.
+- **AI Video Ad Editor** — Claude skill that turns raw footage into 9:16 ad videos with hooks, captions and motion graphics (ffmpeg).
+- **MATFBPRO** — pain-first marketing framework covering VOC, angles, awareness levels, funnel stages, offers and CTAs.
 
 ---
 
-## How I Approach an Automation Project
+## Core Capabilities
 
-```text
-Client / Business Requirement
-        ↓
-Understand AS-IS Process
-        ↓
-Identify Pain Points & Manual Work
-        ↓
-Define TO-BE Workflow
-        ↓
-Business Rules + Exceptions
-        ↓
-Choose Automation / AI / API Tools
-        ↓
-AI-Assisted Implementation
-        ↓
-Testing / UAT / Error Handling
-        ↓
-Monitoring & Documentation
-        ↓
-Optimisation
-```
+**Business systems analysis:** requirements gathering · AS-IS / TO-BE process mapping · gap analysis · business rules and exceptions · data modelling · acceptance criteria and UAT · data cleansing and migration · reporting automation · stakeholder and field-user adoption
 
-**Business first. Technology second. AI where it adds value.**
+**AI & automation:** Claude Code, Codex, DeepSeek · AI agents and LLM workflows · prompt and workflow engineering · MCP · REST APIs and webhooks · n8n / Make (hands-on development track) · human-in-the-loop approval flows
 
----
+**Technology:** Node.js / Express · JavaScript / TypeScript · Next.js · SQLite · Supabase / PostgreSQL · PWA · ExcelJS · Google Calendar API · WhatsApp Cloud API · OCR · Git / GitHub · Linux VPS (Debian, Nginx, PM2)
 
-## Professional Background
+**Operations domain:** fleet and vehicle maintenance (PPM/CM, SLA, availability) · HSE (ISO 45001, HIRARC, DOSH records) · logistics and facilities · banking IT
 
-- **Aviation Vehicles Maintenance Coordinator — PDB assignment**: coordinator role supporting aviation vehicle maintenance activities for PETRONAS Dagangan Berhad (PDB).
-- **HSE Coordinator / Logistics & Facility Executive — RB Plant Services Sdn Bhd**: business process coordination, HSE systems, documentation, project support and operational workflows in an industrial environment.
-- **IT Management / Project Experience**: banking-sector IT operations, project coordination and systems-related work.
-- **Safety & HSE Training Experience**: industrial and oil & gas environment.
-- **Business Coaching / Entrepreneurship**: business systems, customer-facing operations and marketing.
-- **AI / Automation Projects**: independent development of AI-assisted business, workflow and SaaS solutions.
+**AI marketing:** customer pain and VOC · angles and funnels (TOFU/MOFU/BOFU) · copy and creative briefs · Meta Ads campaign structure, testing and analysis
 
 ---
 
 ## Education & Qualifications
 
-- MBA Islamic Banking — Universiti Kebangsaan Malaysia
-- Bachelor of Management Information Systems — Oklahoma City University
-- Diploma Secretarial Sciences
-- Diploma Personnel Management — UniSZA
+- MBA (Islamic Banking) — Universiti Kebangsaan Malaysia
+- Bachelor of Management Information Systems — Oklahoma City University, USA
+- Diploma in Personnel Management — UniSZA
+- Diploma in Secretarial Sciences
 - NIOSH Safety & Health Officer training
+
+---
+
+## Target Roles
+
+Business Systems Analyst · AI Business Analyst · AI Automation Specialist · AI Operations Specialist · Digital Transformation Executive · Maintenance / CMMS Systems Analyst · Operations Systems Coordinator · Freelance internal-tools and workflow automation builder
 
 ---
 
@@ -144,4 +126,4 @@ Optimisation
 **Email:** mzawavi@gmail.com  
 **GitHub:** https://github.com/mzawavi-tech/mzawavi-ai-automation-portfolio
 
-> WhatsApp and LinkedIn are intentionally not published publicly. Recruiters can contact me by email.
+> Phone and WhatsApp are shared directly with employers and clients on request.

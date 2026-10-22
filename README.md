@@ -13,7 +13,22 @@ Malaysia | Remote | Open to international, USD-based roles
 
 ## 💼 Remote Job Application Template
 
-**[Open Remote Job Application Template](REMOTE_JOB_APPLICATION_TEMPLATE.md)** — standard checklist and message template for remote job applications.
+**[Open Job Application Kit](REMOTE_JOB_APPLICATION_TEMPLATE.md)** — profile summaries, cover notes and checklists for local, remote and freelance (USD) applications.
+
+---
+
+## ⭐ Featured: FleetCare PPM/CM — Live Production System
+
+A fleet maintenance system I designed and delivered for the airport aviation fuel terminal where I work as maintenance coordinator. It replaced paper and double data entry across two Excel workbooks with one mobile web app, and has been in daily production use since October 2026.
+
+- Technicians log breakdowns and preventive-maintenance checklists once, on their phone
+- Live availability (x/5 units), schedule board, PPM monitor and computed alerts
+- Contract time limits per task with late flags and penalty estimates
+- Client reports exported as `.xlsx` in the client's existing layout
+- Three years of messy Excel history cleaned and migrated
+- Node.js, Express, SQLite, PWA, ExcelJS, Google Calendar, Nginx/PM2 on a VPS; built with Claude Code
+
+**[▶ Try the interactive demo](https://mzawavi-tech.github.io/mzawavi-ai-automation-portfolio/projects/fleet-maintenance-ppm-cm/demo/)** (fictional data) · **[Read the case study](projects/fleet-maintenance-ppm-cm/README.md)**
 
 ---
 
@@ -33,9 +48,9 @@ This repository is a **sanitized portfolio**. It contains conceptual workflow de
 | **AI Infrastructure** | MCP, AI-to-execution bridges, tool integration, task orchestration |
 | **AI Marketing & Growth** | Customer pain/VOC, marketing angles, emotional triggers, TOFU/MOFU/BOFU, campaign strategy, AI-assisted research, Meta Ads strategy and optimisation workflows |
 | **Automation & integration** | Workflow automation, business process automation, REST APIs, webhooks, event-driven design, data validation and transformation |
-| **Development** | Node.js, TypeScript, JavaScript, Git / GitHub |
+| **Development** | Node.js / Express, TypeScript, JavaScript, PWA, ExcelJS, Git / GitHub, Linux VPS (Nginx, PM2) |
 | **Data** | Supabase, PostgreSQL, SQLite |
-| **Domain** | B2B SaaS |
+| **Domain** | Fleet and maintenance operations (aviation fuel), HSE, logistics, banking IT, B2B SaaS |
 
 ---
 
@@ -71,10 +86,14 @@ The [architecture overview](architecture/README.md) describes the general patter
 
 These are projects I have worked on. Source code and implementation details are private and intentionally not published here.
 
+- **FleetCare PPM/CM (live in production)** — maintenance management system for an airport refueller fleet: breakdown and PM workflows, contract SLA tracking, automated client reports and data migration. [Case study](projects/fleet-maintenance-ppm-cm/README.md) · [Demo](https://mzawavi-tech.github.io/mzawavi-ai-automation-portfolio/projects/fleet-maintenance-ppm-cm/demo/)
 - **GPTWORKPRO** — an AI-assisted business and workflow system combining reusable knowledge assets, specialist AI workflows and execution-oriented automation.
 - **Referly** — a B2B referral and affiliate SaaS covering referral, registration, booking and reward workflows.
 - **MiraAI** — an AI knowledge and workflow platform built around knowledge management, AI agents and workflow automation.
 - **MiraAI SHO Tutor** — an AI-assisted tutoring system for structured learning and exam preparation.
+- **AI Marketing Skill Pack** — eight connected Claude skills (research, strategy, content, copy, poster, Meta Ads, performance analysis) packaged as a sellable product.
+- **AI Video Ad Editor** — a Claude skill that turns raw footage into 9:16 ad videos with hooks, captions and motion graphics using ffmpeg.
+- **AI operations dashboard and Meta Ads agent** — a personal AI assistant dashboard (tasks, ideas, live ad numbers) used to run Facebook-to-WhatsApp lead campaigns for my own service business.
 - **TinnyBridge MCP** — a custom MCP bridge for connecting AI coding workflows with a local execution environment, including task execution, result retrieval and recovery handling.
 
 ---
@@ -100,7 +119,7 @@ I use AI coding and specialist tools to move faster, while reviewing, testing an
 
 ## Scope and Honesty Note
 
-The workflow examples here are conceptual. Tools such as n8n, Zapier, Make, Lindy, Clay, Apollo or Instantly are not part of this repository, and nothing here claims production experience with them. The concepts shown (webhooks, REST APIs, validation, retries, human review, logging) are what I would apply on any of those platforms.
+The FleetCare demo is a working prototype of a real production system, rebuilt with fictional data. The workflow examples are conceptual. Tools such as n8n, Zapier, Make, Lindy, Clay, Apollo or Instantly are not part of this repository, and nothing here claims production experience with them. The concepts shown (webhooks, REST APIs, validation, retries, human review, logging) are what I would apply on any of those platforms.
 
 The marketing capabilities described above reflect AI-assisted strategy and workflow design. Specific production ad-spend results or platform-scale claims are not stated unless documented separately.
 
