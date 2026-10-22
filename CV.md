@@ -48,7 +48,7 @@ I am not positioned as a pure software developer. My strength is **business anal
 
 ### AI Marketing & Growth Systems
 - Customer avatar, pain-point and Voice of Customer (VOC) analysis
-- Emotional triggers, marketing angles and awareness-level strategy
+- Emotional triggers, marketing angles, awareness-level strategy
 - TOFU / MOFU / BOFU funnel and campaign architecture
 - CW, hooks, copywriting, offer / CTA development and creative direction
 - AI-assisted market and competitor research
@@ -120,6 +120,7 @@ Optimisation
 
 ## Professional Background
 
+- **Aviation Vehicles Maintenance Coordinator — PDB assignment**: coordinator role supporting aviation vehicle maintenance activities for PETRONAS Dagangan Berhad (PDB).
 - **HSE Coordinator / Logistics & Facility Executive — RB Plant Services Sdn Bhd**: business process coordination, HSE systems, documentation, project support and operational workflows in an industrial environment.
 - **IT Management / Project Experience**: banking-sector IT operations, project coordination and systems-related work.
 - **Safety & HSE Training Experience**: industrial and oil & gas environment.
