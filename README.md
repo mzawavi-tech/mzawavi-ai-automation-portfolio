@@ -1,98 +1,86 @@
 # mzawavi-ai-automation-portfolio
 
-# Business Systems Analyst | AI Automation & AI Operations
+# AI Integration & Automation Specialist | Business Systems & AI Operations
 
 **Mohamad Zawavi Muda**  
-Business Systems Analyst | AI Automation & AI Operations
+AI Integration & Automation Specialist | Business Systems & AI Operations
 
-Malaysia | Remote | Available for International / USD-based Roles
+Malaysia | Remote / Hybrid | Open to Relocation | International Opportunities
 
 ---
 
 ## Professional Positioning
 
-Business and systems professional combining long-term IT, business analysis, operations, HSE, logistics and hands-on AI automation experience.
+Business and systems professional combining long-term IT, business analysis, project coordination, industrial operations and hands-on AI-assisted solution development.
 
-I focus on understanding business requirements, mapping processes, identifying gaps, designing practical workflows, coordinating implementation, and using AI/automation to improve operational efficiency.
+I translate operational and business problems into practical digital workflows: understand the current process, identify gaps and exceptions, design a workable solution, coordinate implementation, integrate relevant tools and support deployment.
 
-My strength is connecting **business problems with workable systems and automation** rather than focusing only on software development.
+My focus is **AI integration, workflow automation and business systems that solve real operational problems**. I use AI coding agents as development partners while applying business analysis, systems thinking and operational experience to guide the solution.
 
-### Current Role
+## Core Capabilities
 
-**Coordinator | RB Plant Services Sdn Bhd**  
-Deployed at PDB, Senai Airport.
-Current role involving operational coordination, aviation fuel vehicle maintenance coordination, documentation, follow-up and communication across stakeholders.
-
----
-
-## Core Skills
+### AI Integration & Automation
+- AI-assisted application development using Claude and Codex
+- LLM workflows and AI agents
+- API and webhook integration
+- MCP and tool integration
+- Workflow and business process automation
+- Prompt and workflow engineering
+- Automation design, testing and operational handover
 
 ### Business Systems & Analysis
-
 - Business requirements gathering
 - AS-IS / TO-BE process analysis
-- Process mapping
-- Gap analysis
+- Process mapping and gap analysis
 - Business rules and exception handling
-- Workflow design
+- Workflow design and process improvement
 - UAT and acceptance thinking
-- Process improvement
-- Documentation and reporting
-- Cross-functional coordination
+- Operational documentation and reporting
+- Cross-functional stakeholder coordination
 
-### AI & Automation
-
-- AI-assisted business workflows
-- AI agents and LLM workflows
-- Claude Code
-- Codex
-- DeepSeek
-- Prompt and workflow engineering
-- Workflow automation
-- AI-assisted software development
-- Business process automation
-
-### Integration & Technology
-
-- REST APIs
-- Webhooks
-- Event-driven workflows
+### Technology & Deployment
 - Node.js / Express
 - Next.js
 - TypeScript / JavaScript
 - Supabase / PostgreSQL
 - SQLite
+- REST APIs and webhooks
 - Git / GitHub
 - WhatsApp Cloud API
 - OCR
-
-### Operations
-
-- HSE coordination
-- Logistics coordination
-- Facility coordination
-- Maintenance coordination
-- Project coordination
-- Vendor / contractor coordination
-- Operational documentation
-- KPI and reporting support
+- VPS-based application deployment
 
 ---
 
 ## Selected Projects
 
-### 1. Referly — B2B Referral & Affiliate SaaS
+### 1. Aviation Bowser Maintenance Management — PPM, CM & Procurement Readiness
+
+A real-world operational workflow digitisation project supporting aviation refuelling bowser maintenance coordination.
+
+**Delivered capabilities:**
+- Individual bowser Planned Preventive Maintenance (PPM) tracking
+- Corrective Maintenance (CM) workflow
+- Advance Google Calendar alerts for upcoming PPM
+- Reminder details include due timing and required checklist items
+- Advance procurement readiness notifications
+- Identification of checklist items that are not available in stock for procurement follow-up
+
+**Implementation:** Claude-assisted development, browser-based web application hosted on a VPS, and Google Calendar reminders.
+
+**Value:** Improves visibility of upcoming maintenance and helps operations and procurement prepare checklist items earlier. This is schedule- and checklist-driven automation, not a predictive-AI claim.
+
+[Read the sanitized case study](./AVIATION-BOWSER-MAINTENANCE-CASE-STUDY.md)
+
+### 2. Referly — B2B Referral & Affiliate SaaS
 
 A B2B referral platform designed to automate customer referral, registration, booking and reward workflows.
 
-**Workflow:**
-
-Customer → Registration → Referral → Booking → Reward
+**Workflow:** Customer → Registration → Referral → Booking → Reward
 
 **Technology:** Next.js, TypeScript, Supabase, PostgreSQL, Puck CMS
 
 **Business / automation focus:**
-
 - Requirements and workflow design
 - Referral-code resolution
 - Customer registration
@@ -103,12 +91,11 @@ Customer → Registration → Referral → Booking → Reward
 
 > Production source code and private business data are intentionally not published in this portfolio.
 
-### 2. MiraAI — AI Knowledge & Workflow Platform
+### 3. MiraAI — AI Knowledge & Workflow Platform
 
 A modular AI platform designed around knowledge management, AI agents and workflow automation.
 
 **Architecture areas:**
-
 - Knowledge Engine
 - Learning Engine
 - Workflow Engine
@@ -118,16 +105,13 @@ A modular AI platform designed around knowledge management, AI agents and workfl
 
 **Technology:** Node.js, Express, SQLite, LLM APIs, WhatsApp Cloud API, OCR
 
-**Workflow:**
+**Workflow:** Knowledge Import → OCR → Knowledge Storage → AI Retrieval → Response
 
-Knowledge Import → OCR → Knowledge Storage → AI Retrieval → Response
-
-### 3. MiraAI SHO Tutor
+### 4. MiraAI SHO Tutor
 
 An AI-assisted learning platform for structured learning, assessment and exam preparation.
 
 **Core components:**
-
 - Tutor Engine
 - Domain Model
 - LLM Abstraction
@@ -138,7 +122,7 @@ An AI-assisted learning platform for structured learning, assessment and exam pr
 
 **Technology:** Node.js, DeepSeek, OpenAI-compatible API architecture, GitHub, AI coding agents
 
-### 4. TinnyBridge / MCP Integration
+### 5. TinnyBridge / MCP Integration
 
 A practical bridge for connecting AI coding workflows with local development tooling and MCP-based execution workflows.
 
@@ -155,28 +139,36 @@ AS-IS / TO-BE Analysis
         ↓
 Process & Workflow Design
         ↓
-AI / Automation Opportunity
+Integration / Automation Opportunity
         ↓
 AI-Assisted Implementation
         ↓
 Testing / UAT
         ↓
-GitHub
-        ↓
 Deployment / Operations
+        ↓
+Continuous Improvement
 ```
 
 ---
 
 ## Professional Background
 
-- Coordinator, RB Plant Services Sdn Bhd (deployed at PDB, Senai Airport) — Current
+- Aviation Refueling Coordinator / Coordinator, RB Plant Services Sdn Bhd (deployed at PDB, Senai Airport) — Current
 - HSE Coordinator / Logistics & Facility Executive, RB Plant Services Sdn Bhd
 - Safety Instructor
 - IT Project Management
 - IT Assistant Manager
 - Material Control & Purchasing
 - Business coaching and digital business operations
+
+---
+
+## Career Target
+
+AI Integration & Automation Specialist | AI Automation Specialist | AI Business Systems Analyst | AI Operations Specialist | Workflow Automation Specialist
+
+Open to remote and hybrid opportunities, and relocation for the right role.
 
 ---
 
