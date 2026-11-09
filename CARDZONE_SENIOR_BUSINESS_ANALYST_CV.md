@@ -7,7 +7,7 @@
 
 ## Professional summary
 
-Business and IT professional with 14 years of experience in banking IT at Bank Islam Malaysia Berhad, 2 years of formal IT Project Manager experience, a Bachelor of Management Information Systems and an MBA in Islamic Banking. Brings banking-sector technology exposure, including handling the Bill Payment module and MEPS-related responsibilities while responsible for IT Application Development & Support at Bank Islam, alongside systems coordination, stakeholder communication, project follow-up and practical workflow digitisation. Project work includes Referly, MiraAI and an aviation maintenance PPM/CM workflow.
+Business and IT professional with 14 years of experience in banking IT at Bank Islam Malaysia Berhad, 2 years of formal IT Project Manager experience, a Bachelor of Management Information Systems and an MBA in Islamic Banking. Brings banking-sector technology exposure, including application development and support, UAT support, system migration support, Bill Payment module responsibilities and MEPS-related responsibilities while working in IT Application Development & Support at Bank Islam, alongside systems coordination, stakeholder communication, project follow-up and practical workflow digitisation. Project work includes Referly, MiraAI and an aviation maintenance PPM/CM workflow.
 
 Interested in applying this systems and process background to customer-facing banking technology implementation, requirements coordination, configuration support, testing, documentation and user walkthroughs.
 
@@ -66,7 +66,9 @@ Recent responsibilities across HSE coordination, logistics/facilities and aviati
 
 ### Bank Islam Malaysia Berhad — IT Assistant Manager, 1998–2012
 - Worked in banking IT operations and systems coordination, supporting technology services and business/user requirements over 14 years.
-- While responsible for IT Application Development & Support, handled the Bill Payment module and had MEPS-related responsibilities as part of the systems/services under his care. This provides direct banking payment application/service support exposure; specific MEPS components, platform architecture, payment rails and technical protocols are not claimed.
+- Worked across IT Application Development & Support, including application development/enhancement, production/application support, UAT support and system migration support.
+- Handled the Bill Payment module and had MEPS-related responsibilities among the systems/services under his care.
+- This provides experience across application lifecycle activities in a banking environment. Specific MEPS components, platform architecture, payment rails and technical protocols are not claimed.
 
 ## Education
 
