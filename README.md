@@ -164,6 +164,11 @@ Continuous Improvement
 
 ---
 
+
+## Business Analysis & Banking Technology Portfolio
+
+For Business Analyst and banking-technology implementation opportunities, see the dedicated [Business Analysis Portfolio](./CARDZONE_BUSINESS_ANALYSIS_PORTFOLIO.md) and [Cardzone Senior Business Analyst CV](./CARDZONE_SENIOR_BUSINESS_ANALYST_CV.md). These pages demonstrate transferable workflow, requirements and application-integration work while explicitly distinguishing it from direct card-management or payment-switching experience.
+
 ## Career Target
 
 AI Integration & Automation Specialist | AI Automation Specialist | AI Business Systems Analyst | AI Operations Specialist | Workflow Automation Specialist
