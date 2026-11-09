@@ -1,183 +1,96 @@
-# mzawavi-ai-automation-portfolio
+# Mohamad Zawavi Muda — Business Systems Analyst Portfolio
 
-# AI Integration & Automation Specialist | Business Systems & AI Operations
+**Business Systems Analyst | Banking IT & Payments Applications | AI-Enabled Business Solutions**
 
-**Mohamad Zawavi Muda**  
-AI Integration & Automation Specialist | Business Systems & AI Operations
-
-Malaysia | Remote / Hybrid | Open to Relocation | International Opportunities
-
----
-
-## Professional Positioning
-
-Business and systems professional combining long-term IT, business analysis, project coordination, industrial operations and hands-on AI-assisted solution development.
-
-I translate operational and business problems into practical digital workflows: understand the current process, identify gaps and exceptions, design a workable solution, coordinate implementation, integrate relevant tools and support deployment.
-
-My focus is **AI integration, workflow automation and business systems that solve real operational problems**. I use AI coding agents as development partners while applying business analysis, systems thinking and operational experience to guide the solution.
-
-## Core Capabilities
-
-### AI Integration & Automation
-- AI-assisted application development using Claude and Codex
-- LLM workflows and AI agents
-- API and webhook integration
-- MCP and tool integration
-- Workflow and business process automation
-- Prompt and workflow engineering
-- Automation design, testing and operational handover
-
-### Business Systems & Analysis
-- Business requirements gathering
-- AS-IS / TO-BE process analysis
-- Process mapping and gap analysis
-- Business rules and exception handling
-- Workflow design and process improvement
-- UAT and acceptance thinking
-- Operational documentation and reporting
-- Cross-functional stakeholder coordination
-
-### Technology & Deployment
-- Node.js / Express
-- Next.js
-- TypeScript / JavaScript
-- Supabase / PostgreSQL
-- SQLite
-- REST APIs and webhooks
-- Git / GitHub
-- WhatsApp Cloud API
-- OCR
-- VPS-based application deployment
-
----
-
-## Selected Projects
-
-### 1. Aviation Bowser Maintenance Management — PPM, CM & Procurement Readiness
-
-A real-world operational workflow digitisation project supporting aviation refuelling bowser maintenance coordination.
-
-**Delivered capabilities:**
-- Individual bowser Planned Preventive Maintenance (PPM) tracking
-- Corrective Maintenance (CM) workflow
-- Advance Google Calendar alerts for upcoming PPM
-- Reminder details include due timing and required checklist items
-- Advance procurement readiness notifications
-- Identification of checklist items that are not available in stock for procurement follow-up
-
-**Implementation:** Claude-assisted development, browser-based web application hosted on a VPS, and Google Calendar reminders.
-
-**Value:** Improves visibility of upcoming maintenance and helps operations and procurement prepare checklist items earlier. This is schedule- and checklist-driven automation, not a predictive-AI claim.
-
-[Read the sanitized case study](./AVIATION-BOWSER-MAINTENANCE-CASE-STUDY.md)
-
-### 2. Referly — B2B Referral & Affiliate SaaS
-
-A B2B referral platform designed to automate customer referral, registration, booking and reward workflows.
-
-**Workflow:** Customer → Registration → Referral → Booking → Reward
-
-**Technology:** Next.js, TypeScript, Supabase, PostgreSQL, Puck CMS
-
-**Business / automation focus:**
-- Requirements and workflow design
-- Referral-code resolution
-- Customer registration
-- Member → Agent upgrade
-- Booking workflow
-- Reward calculation
-- Admin dashboard
-
-> Production source code and private business data are intentionally not published in this portfolio.
-
-### 3. MiraAI — AI Knowledge & Workflow Platform
-
-A modular AI platform designed around knowledge management, AI agents and workflow automation.
-
-**Architecture areas:**
-- Knowledge Engine
-- Learning Engine
-- Workflow Engine
-- Agent Engine
-- Connector Hub
-- Import Engine
-
-**Technology:** Node.js, Express, SQLite, LLM APIs, WhatsApp Cloud API, OCR
-
-**Workflow:** Knowledge Import → OCR → Knowledge Storage → AI Retrieval → Response
-
-### 4. MiraAI SHO Tutor
-
-An AI-assisted learning platform for structured learning, assessment and exam preparation.
-
-**Core components:**
-- Tutor Engine
-- Domain Model
-- LLM Abstraction
-- Evaluator
-- Learning / Attempt Tracking
-- CLI
-- Seed Content
-
-**Technology:** Node.js, DeepSeek, OpenAI-compatible API architecture, GitHub, AI coding agents
-
-### 5. TinnyBridge / MCP Integration
-
-A practical bridge for connecting AI coding workflows with local development tooling and MCP-based execution workflows.
-
-Focus areas include AI-assisted development, tool integration, execution handoff and developer workflow automation.
-
----
-
-## AI-Assisted Business Systems Workflow
-
-```text
-Business Requirement
-        ↓
-AS-IS / TO-BE Analysis
-        ↓
-Process & Workflow Design
-        ↓
-Integration / Automation Opportunity
-        ↓
-AI-Assisted Implementation
-        ↓
-Testing / UAT
-        ↓
-Deployment / Operations
-        ↓
-Continuous Improvement
-```
-
----
-
-## Professional Background
-
-- Aviation Refueling Coordinator / Coordinator, RB Plant Services Sdn Bhd (deployed at PDB, Senai Airport) — Current
-- HSE Coordinator / Logistics & Facility Executive, RB Plant Services Sdn Bhd
-- Safety Instructor
-- IT Project Management
-- IT Assistant Manager
-- Material Control & Purchasing
-- Business coaching and digital business operations
-
----
-
-
-## Business Analysis & Banking Technology Portfolio
-
-For Business Analyst and banking-technology implementation opportunities, see the dedicated [Business Analysis Portfolio](./CARDZONE_BUSINESS_ANALYSIS_PORTFOLIO.md) and [Cardzone Senior Business Analyst CV](./CARDZONE_SENIOR_BUSINESS_ANALYST_CV.md). These pages demonstrate transferable workflow, requirements and application-integration work while explicitly distinguishing it from direct card-management or payment-switching experience.
-
-## Career Target
-
-AI Integration & Automation Specialist | AI Automation Specialist | AI Business Systems Analyst | AI Operations Specialist | Workflow Automation Specialist
-
-Open to remote and hybrid opportunities, and relocation for the right role.
-
----
-
-## Contact
-
-**Email:** mzawavi@gmail.com  
+Malaysia · Remote / Hybrid · Open to relocation  
+**Email:** mzawavi@gmail.com · **Phone:** +60 11-1866 9769  
 **GitHub:** https://github.com/mzawavi-tech
+
+---
+
+## Professional profile
+
+Business and IT professional with **14 years of banking IT experience at Bank Islam Malaysia Berhad**, including IT Application Development & Support, plus **2 years of formal IT Project Manager experience**.
+
+My banking application responsibilities covered development and enhancement, application/production support, UAT support and system migration support. I handled the **Bill Payment module** and had **MEPS-related responsibilities** among the systems/services under my care.
+
+I combine this background with a Bachelor of Management Information Systems, an MBA in Islamic Banking, operational process experience and hands-on development of modern web and AI-enabled business systems.
+
+My core strength is **understanding business processes and translating them into system workflows, requirements, integrations and practical solutions**. AI coding agents accelerate implementation; business analysis and systems thinking guide what should be built and how it should work.
+
+## Full Business Systems Analyst portfolio
+
+**[Open the Business Systems Analyst Portfolio](./BUSINESS_SYSTEMS_ANALYST_PORTFOLIO.md)**
+
+The portfolio covers:
+- Banking IT application development and support experience at Bank Islam.
+- Bill Payment module and MEPS-related responsibilities.
+- IT Project Management experience.
+- Referly B2B referral and affiliate SaaS.
+- MiraAI knowledge and workflow platform.
+- Aviation Bowser PPM/CM maintenance workflow.
+- Business analysis approach, technical integration literacy and role-fit boundaries.
+
+## Selected project evidence
+
+### 1. Referly — B2B Referral & Affiliate SaaS
+**Next.js · TypeScript · Supabase / PostgreSQL · Puck CMS**
+
+Customer registration, referral-code resolution, member/agent upgrade, booking, reward calculation and admin workflows.
+
+**BSA focus:** user journeys, business rules, data relationships and requirements-to-workflow implementation.
+
+### 2. MiraAI — AI Knowledge & Workflow Platform
+**Node.js · Express · SQLite · LLM APIs · WhatsApp Cloud API · OCR**
+
+Knowledge import, OCR-assisted ingestion, storage, retrieval and conversational response workflows.
+
+**BSA focus:** functional decomposition, information flows, API integration and modular system requirements.
+
+### 3. Aviation Bowser Maintenance — PPM, CM & Procurement Readiness
+**Browser-based application · VPS · Google Calendar**
+
+Per-bowser PPM tracking, corrective maintenance follow-up, advance calendar reminders and checklist/procurement readiness notifications.
+
+**BSA focus:** operational process analysis, workflow digitisation, exception visibility and cross-functional coordination.
+
+[Read the sanitized aviation maintenance case study](./AVIATION-BOWSER-MAINTENANCE-CASE-STUDY.md)
+
+## Core capabilities
+
+- Banking IT and application lifecycle understanding
+- Business process and workflow analysis
+- Requirements clarification and business rules
+- Application development/enhancement and production support
+- UAT and system migration support
+- Stakeholder and project coordination
+- REST APIs, webhooks and system integration
+- JavaScript / TypeScript, Node.js / Express, Next.js
+- SQLite, Supabase / PostgreSQL, Git / GitHub
+- AI / LLM integration and AI-assisted application development
+
+## Professional experience
+
+- **RB Plant Services Sdn Bhd | May 2024–Present** — HSE, logistics/facilities and aviation refuelling coordination responsibilities.
+- **Ranaco Education & Training Institute | 2014–2019** — Safety Instructor.
+- **Koperasi Pembiayaan Syariah Angkasa Berhad | 2012–2014** — IT Project Manager.
+- **Bank Islam Malaysia Berhad | 1998–2012** — IT Assistant Manager; IT Application Development & Support.
+
+## Education
+
+- MBA, Islamic Banking — Universiti Kebangsaan Malaysia, 2012
+- Bachelor of Management Information Systems — Oklahoma City University, 1998
+- Diploma in Secretarial Sciences
+- Diploma in Personnel Management — Universiti Sultan Zainal Abidin
+
+## Target roles
+
+Business Systems Analyst · Senior Business Analyst · IT Business Analyst · Systems Analyst · Application / Implementation Consultant · Banking Technology Business Analyst · AI Solutions Analyst
+
+---
+
+## Accuracy and confidentiality
+
+I do not claim 14 years of formal Business Analyst employment. My 14 years are banking IT experience across application development and support, including UAT and migration support. The exact MEPS components, architecture and protocols have not been confirmed; I do not claim card-switching engineering, ISO8583, NDC+ or card-management platform delivery. Project descriptions are sanitized and exclude client-owned code, confidential records and credentials.
+
+**Contact:** mzawavi@gmail.com
