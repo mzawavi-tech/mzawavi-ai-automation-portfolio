@@ -4,11 +4,11 @@
 **Purpose:** Demonstrate transferable business analysis and implementation capabilities for Business Analyst / Senior Business Analyst roles.  
 **Important boundary:** These are the candidate's own portfolio and operational workflow projects. They are not Cardzone client projects and do not establish direct card-switching, ISO8583, NDC+ or card-management delivery experience.
 
-## Additional banking experience — Bank Islam Bill Payment module
+## Additional banking experience — Bill Payment module and MEPS responsibilities
 
-While responsible for IT Application Development & Support at Bank Islam Malaysia Berhad, the candidate handled the Bill Payment module. This is relevant application-level exposure to a banking payment function and strengthens the banking systems context for payment-related implementation work.
+While responsible for IT Application Development & Support at Bank Islam Malaysia Berhad, the candidate handled the Bill Payment module and had MEPS-related responsibilities among the systems/services under his care. This is relevant banking payment application and service-support exposure and strengthens the banking systems context for payment-related implementation work.
 
-The exact product/platform, technical architecture, payment rails, card-processing relationship, transaction volumes and protocols have not been confirmed. Do not describe this as card-switching, ISO8583, NDC+ or payment-gateway implementation unless separately evidenced.
+The exact MEPS components, product/platform, technical architecture, payment rails, card-processing relationship, transaction volumes and protocols have not been confirmed. Do not describe this as MEPS platform development, card-switching engineering, ISO8583, NDC+ or payment-gateway implementation unless separately evidenced.
 
 ## 1. Referly — B2B Referral & Affiliate SaaS
 
