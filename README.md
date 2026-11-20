@@ -20,7 +20,8 @@ My core strength is **understanding business processes and translating them into
 
 ## Full Business Systems Analyst portfolio
 
-**[Open the Business Systems Analyst Portfolio](./BUSINESS_SYSTEMS_ANALYST_PORTFOLIO.md)**
+**[Open the Business Systems Analyst Portfolio](./BUSINESS_SYSTEMS_ANALYST_PORTFOLIO.md)**  
+**[Browse the complete project repository index](./PROJECT_REPOSITORY_INDEX.md)**
 
 The portfolio covers:
 - Banking IT application development and support experience at Bank Islam.
